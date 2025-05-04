@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_forgot_password.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_forgot_password.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_landing.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_landing.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/success_check_layout.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/success_check_layout.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/fragment_item_list.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/fragment_item_list.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_about_devs.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_about_devs.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_change_password.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_change_password.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/fragment_logout_dialog.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/fragment_logout_dialog.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/settings_activity.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/settings_activity.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_signin.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_signin.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_signup.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_signup.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_profile.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_profile.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/styles.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/styles.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/layout_bottom_navigation.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/layout_bottom_navigation.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/dialog_logout_confirmation.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/dialog_logout_confirmation.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_edit_profile.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_edit_profile.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_tasks.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_tasks.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_base.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_base.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/item_custom_list.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/item_custom_list.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_profile_update_success.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_profile_update_success.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_navigation_utils.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_navigation_utils.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_login_confirmation.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_login_confirmation.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_listview_demo.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_listview_demo.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/activity_settings.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/logoutconfirmation.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/logoutconfirmation.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/fragment_item.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/fragment_item.xml"
+    },
+    {
+        "merged": "com.example.cleansmart.app-mergeDebugResources-59:/layout/item_team_member.xml",
+        "source": "com.example.cleansmart.app-main-62:/layout/item_team_member.xml"
+    }
+]
