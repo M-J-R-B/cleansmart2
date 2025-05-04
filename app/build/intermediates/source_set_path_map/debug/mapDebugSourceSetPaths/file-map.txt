@@ -1,63 +1,42 @@
-com.example.cleansmart.app-lifecycle-runtime-2.6.1-0 C:\Users\user\.gradle\caches\8.10.2\transforms\04cc7c09b19bb1d0690b78ad9c54eb7a\transformed\lifecycle-runtime-2.6.1\res
-com.example.cleansmart.app-lifecycle-viewmodel-2.6.1-1 C:\Users\user\.gradle\caches\8.10.2\transforms\052895dc89de8c78a86873fe22fe3841\transformed\lifecycle-viewmodel-2.6.1\res
-com.example.cleansmart.app-lifecycle-viewmodel-ktx-2.6.1-2 C:\Users\user\.gradle\caches\8.10.2\transforms\0c78f3d6449da27e8bbf01a71396c561\transformed\lifecycle-viewmodel-ktx-2.6.1\res
-com.example.cleansmart.app-savedstate-ktx-1.2.1-3 C:\Users\user\.gradle\caches\8.10.2\transforms\0f73589cbdd2b6304e100484794df009\transformed\savedstate-ktx-1.2.1\res
-com.example.cleansmart.app-lifecycle-runtime-ktx-2.6.1-4 C:\Users\user\.gradle\caches\8.10.2\transforms\0f85c661e083db1c1f28286421cdfd4a\transformed\lifecycle-runtime-ktx-2.6.1\res
-com.example.cleansmart.app-foundation-layout-release-5 C:\Users\user\.gradle\caches\8.10.2\transforms\13376d8ca5ad2c369b5eeb6c77c7b6fa\transformed\foundation-layout-release\res
-com.example.cleansmart.app-ui-graphics-release-6 C:\Users\user\.gradle\caches\8.10.2\transforms\1a0b2a24bef296201f39e7478eac674e\transformed\ui-graphics-release\res
-com.example.cleansmart.app-startup-runtime-1.1.1-7 C:\Users\user\.gradle\caches\8.10.2\transforms\1c6965744311bd17e300cbf71212617b\transformed\startup-runtime-1.1.1\res
-com.example.cleansmart.app-runtime-saveable-release-8 C:\Users\user\.gradle\caches\8.10.2\transforms\26840b495c6511841c3d5c43fb5b86b5\transformed\runtime-saveable-release\res
-com.example.cleansmart.app-material-release-9 C:\Users\user\.gradle\caches\8.10.2\transforms\2b6094a13f1957174df9722deaa3c9ac\transformed\material-release\res
-com.example.cleansmart.app-core-runtime-2.2.0-10 C:\Users\user\.gradle\caches\8.10.2\transforms\306bb99507c7bec2426c8286e3c99569\transformed\core-runtime-2.2.0\res
-com.example.cleansmart.app-security-crypto-1.1.0-alpha06-11 C:\Users\user\.gradle\caches\8.10.2\transforms\3748b2adc2fa6a4dc8c8724f05a27383\transformed\security-crypto-1.1.0-alpha06\res
-com.example.cleansmart.app-ui-tooling-preview-release-12 C:\Users\user\.gradle\caches\8.10.2\transforms\385e82e6282cd52b227f3d3bc55fb369\transformed\ui-tooling-preview-release\res
-com.example.cleansmart.app-lifecycle-livedata-core-2.6.1-13 C:\Users\user\.gradle\caches\8.10.2\transforms\3de551f81d5ffff2f296ac6b24d710b2\transformed\lifecycle-livedata-core-2.6.1\res
-com.example.cleansmart.app-constraintlayout-2.1.4-14 C:\Users\user\.gradle\caches\8.10.2\transforms\3eacd8fceef64feb38f685b3ae82140d\transformed\constraintlayout-2.1.4\res
-com.example.cleansmart.app-drawerlayout-1.1.1-15 C:\Users\user\.gradle\caches\8.10.2\transforms\461df64aa3bd25bf2e92d3c506fb4a73\transformed\drawerlayout-1.1.1\res
-com.example.cleansmart.app-material-ripple-release-16 C:\Users\user\.gradle\caches\8.10.2\transforms\481e0242e8fd3f9532d5633581d0c71c\transformed\material-ripple-release\res
-com.example.cleansmart.app-ui-text-release-17 C:\Users\user\.gradle\caches\8.10.2\transforms\4a3a7f98b8a9c9f56183bfbf8bc2ff65\transformed\ui-text-release\res
-com.example.cleansmart.app-core-ktx-1.12.0-18 C:\Users\user\.gradle\caches\8.10.2\transforms\4ad80946aaef0fff356f92e4afb1214b\transformed\core-ktx-1.12.0\res
-com.example.cleansmart.app-annotation-experimental-1.4.0-19 C:\Users\user\.gradle\caches\8.10.2\transforms\4b81ec775aa0d59ee85da283679f7360\transformed\annotation-experimental-1.4.0\res
-com.example.cleansmart.app-material3-release-20 C:\Users\user\.gradle\caches\8.10.2\transforms\54195eb82962576b927e3ba8552e15ed\transformed\material3-release\res
-com.example.cleansmart.app-foundation-release-21 C:\Users\user\.gradle\caches\8.10.2\transforms\54ae6eb19fb5f0bb3876fc6a049ea0f4\transformed\foundation-release\res
-com.example.cleansmart.app-lifecycle-process-2.6.1-22 C:\Users\user\.gradle\caches\8.10.2\transforms\571e7bddd394ab6ef1cf78269c37b430\transformed\lifecycle-process-2.6.1\res
-com.example.cleansmart.app-lifecycle-viewmodel-savedstate-2.6.1-23 C:\Users\user\.gradle\caches\8.10.2\transforms\59ce3146bae2e7fd3c9e2e07275beec5\transformed\lifecycle-viewmodel-savedstate-2.6.1\res
-com.example.cleansmart.app-appcompat-1.6.1-24 C:\Users\user\.gradle\caches\8.10.2\transforms\5a5f1a9989a59abd1702d9ede7dec1a1\transformed\appcompat-1.6.1\res
-com.example.cleansmart.app-material-icons-core-release-25 C:\Users\user\.gradle\caches\8.10.2\transforms\60c10b3f97632f7acb5e6d5c07934bb1\transformed\material-icons-core-release\res
-com.example.cleansmart.app-emoji2-1.3.0-26 C:\Users\user\.gradle\caches\8.10.2\transforms\6b78152e4a1805c9012df87a051d5a1f\transformed\emoji2-1.3.0\res
-com.example.cleansmart.app-activity-1.8.0-27 C:\Users\user\.gradle\caches\8.10.2\transforms\6b93941741651cebba29cced331739e2\transformed\activity-1.8.0\res
-com.example.cleansmart.app-activity-compose-1.8.0-28 C:\Users\user\.gradle\caches\8.10.2\transforms\71b17ff1cb3e618750cb93b08d3d189d\transformed\activity-compose-1.8.0\res
-com.example.cleansmart.app-ui-geometry-release-29 C:\Users\user\.gradle\caches\8.10.2\transforms\7581be225c00ce4dffb13a09ae5ee1c6\transformed\ui-geometry-release\res
-com.example.cleansmart.app-appcompat-resources-1.6.1-30 C:\Users\user\.gradle\caches\8.10.2\transforms\77b52e6d33163d841ef58858861996ec\transformed\appcompat-resources-1.6.1\res
-com.example.cleansmart.app-savedstate-1.2.1-31 C:\Users\user\.gradle\caches\8.10.2\transforms\7917d6bab084be89d685c14afdb32a39\transformed\savedstate-1.2.1\res
-com.example.cleansmart.app-viewpager2-1.0.0-32 C:\Users\user\.gradle\caches\8.10.2\transforms\7c4d1c9d3f2d01a65acf7a110aedff07\transformed\viewpager2-1.0.0\res
-com.example.cleansmart.app-runtime-release-33 C:\Users\user\.gradle\caches\8.10.2\transforms\7e37a96c3d0990d59f6b299d79a686d3\transformed\runtime-release\res
-com.example.cleansmart.app-cardview-1.0.0-34 C:\Users\user\.gradle\caches\8.10.2\transforms\90bfa115ef2650921aad582e03182d44\transformed\cardview-1.0.0\res
-com.example.cleansmart.app-emoji2-views-helper-1.3.0-35 C:\Users\user\.gradle\caches\8.10.2\transforms\91ebc5502e3e79e24b69744dde74b02e\transformed\emoji2-views-helper-1.3.0\res
-com.example.cleansmart.app-ui-unit-release-36 C:\Users\user\.gradle\caches\8.10.2\transforms\99a0b465a825ed7ca7efd3c4856539c4\transformed\ui-unit-release\res
-com.example.cleansmart.app-activity-ktx-1.8.0-37 C:\Users\user\.gradle\caches\8.10.2\transforms\9fb48e46e3e1851eecb5c52ace0b900d\transformed\activity-ktx-1.8.0\res
-com.example.cleansmart.app-coordinatorlayout-1.1.0-38 C:\Users\user\.gradle\caches\8.10.2\transforms\a5c3307f7cd96b01ebfa3bc452a95040\transformed\coordinatorlayout-1.1.0\res
-com.example.cleansmart.app-ui-release-39 C:\Users\user\.gradle\caches\8.10.2\transforms\a710164cde60e90a78b20b2479b86c6e\transformed\ui-release\res
-com.example.cleansmart.app-recyclerview-1.3.0-40 C:\Users\user\.gradle\caches\8.10.2\transforms\af3980226a7829b66a1c677f8cc0673f\transformed\recyclerview-1.3.0\res
-com.example.cleansmart.app-fragment-1.3.6-41 C:\Users\user\.gradle\caches\8.10.2\transforms\b13bc2dffbd90ea7809f7249cb772015\transformed\fragment-1.3.6\res
-com.example.cleansmart.app-transition-1.2.0-42 C:\Users\user\.gradle\caches\8.10.2\transforms\ca494f24a6739a5bb7293a12cfdaaac3\transformed\transition-1.2.0\res
-com.example.cleansmart.app-animation-core-release-43 C:\Users\user\.gradle\caches\8.10.2\transforms\cf6b85fe30fb5c484fa23401c7b78fa5\transformed\animation-core-release\res
-com.example.cleansmart.app-profileinstaller-1.3.0-44 C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\res
-com.example.cleansmart.app-media-1.0.0-45 C:\Users\user\.gradle\caches\8.10.2\transforms\d229e88eee3ee46e11ab5055ca6fe1a0\transformed\media-1.0.0\res
-com.example.cleansmart.app-ui-tooling-release-46 C:\Users\user\.gradle\caches\8.10.2\transforms\d421cdf6edc5e03e01381c72924bce6c\transformed\ui-tooling-release\res
-com.example.cleansmart.app-lifecycle-livedata-2.6.1-47 C:\Users\user\.gradle\caches\8.10.2\transforms\d649e27182b34e746d261c25ced344e6\transformed\lifecycle-livedata-2.6.1\res
-com.example.cleansmart.app-customview-poolingcontainer-1.0.0-48 C:\Users\user\.gradle\caches\8.10.2\transforms\d7f9cd906f3592320d2edc548cddd314\transformed\customview-poolingcontainer-1.0.0\res
-com.example.cleansmart.app-ui-test-manifest-1.6.6-49 C:\Users\user\.gradle\caches\8.10.2\transforms\da9217170796d976e8123738a8479699\transformed\ui-test-manifest-1.6.6\res
-com.example.cleansmart.app-ui-util-release-50 C:\Users\user\.gradle\caches\8.10.2\transforms\de7acae3344cfa3f702c2fc75c1f15e6\transformed\ui-util-release\res
-com.example.cleansmart.app-material-1.10.0-51 C:\Users\user\.gradle\caches\8.10.2\transforms\e14c9c8f12b694d9d9a83cf6f7580a46\transformed\material-1.10.0\res
-com.example.cleansmart.app-biometric-1.2.0-alpha05-52 C:\Users\user\.gradle\caches\8.10.2\transforms\e598cdc554676e615ef495374858d459\transformed\biometric-1.2.0-alpha05\res
-com.example.cleansmart.app-animation-release-53 C:\Users\user\.gradle\caches\8.10.2\transforms\f077c2bc09c6097fb2d1e1eddc0b7727\transformed\animation-release\res
-com.example.cleansmart.app-core-1.12.0-54 C:\Users\user\.gradle\caches\8.10.2\transforms\f537fbdaca71759ca0a3652b028879d9\transformed\core-1.12.0\res
-com.example.cleansmart.app-ui-tooling-data-release-55 C:\Users\user\.gradle\caches\8.10.2\transforms\f8ab8dda5186011c52a46a13c714e55c\transformed\ui-tooling-data-release\res
-com.example.cleansmart.app-pngs-56 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\build\generated\res\pngs\debug
-com.example.cleansmart.app-resValues-57 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\build\generated\res\resValues\debug
-com.example.cleansmart.app-packageDebugResources-58 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.cleansmart.app-packageDebugResources-59 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.cleansmart.app-debug-60 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.example.cleansmart.app-debug-61 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\src\debug\res
-com.example.cleansmart.app-main-62 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\src\main\res
+com.example.cleansmart.app-lifecycle-livedata-2.7.0-0 C:\Users\PC\.gradle\caches\8.11.1\transforms\0255d8c9fa75e3eb7d678ae1a7640bd8\transformed\lifecycle-livedata-2.7.0\res
+com.example.cleansmart.app-transition-1.2.0-1 C:\Users\PC\.gradle\caches\8.11.1\transforms\3085e7a2cb137742cb696b8f2c912ec1\transformed\transition-1.2.0\res
+com.example.cleansmart.app-appcompat-resources-1.6.1-2 C:\Users\PC\.gradle\caches\8.11.1\transforms\335572d548362091dcf527732c5a8318\transformed\appcompat-resources-1.6.1\res
+com.example.cleansmart.app-lifecycle-viewmodel-2.7.0-3 C:\Users\PC\.gradle\caches\8.11.1\transforms\3b9b44d7ff3f416b41bdc73fafd265a4\transformed\lifecycle-viewmodel-2.7.0\res
+com.example.cleansmart.app-databinding-adapters-8.9.1-4 C:\Users\PC\.gradle\caches\8.11.1\transforms\4167944651b054038384b2a92ba5e5d7\transformed\databinding-adapters-8.9.1\res
+com.example.cleansmart.app-viewpager2-1.0.0-5 C:\Users\PC\.gradle\caches\8.11.1\transforms\452ccab6ea2f04fa1e140490fe18a390\transformed\viewpager2-1.0.0\res
+com.example.cleansmart.app-lifecycle-runtime-ktx-2.7.0-6 C:\Users\PC\.gradle\caches\8.11.1\transforms\5746b29707fc965068e288167a36a0a1\transformed\lifecycle-runtime-ktx-2.7.0\res
+com.example.cleansmart.app-annotation-experimental-1.3.0-7 C:\Users\PC\.gradle\caches\8.11.1\transforms\61d0ddf18321cfdbf9dbdb2b56b34312\transformed\annotation-experimental-1.3.0\res
+com.example.cleansmart.app-lifecycle-livedata-ktx-2.7.0-8 C:\Users\PC\.gradle\caches\8.11.1\transforms\68c5c6ede56ce90781cdb58cbe725a92\transformed\lifecycle-livedata-ktx-2.7.0\res
+com.example.cleansmart.app-lifecycle-livedata-core-ktx-2.7.0-9 C:\Users\PC\.gradle\caches\8.11.1\transforms\6d84640e27aa741d2bdf274f7e1dbe48\transformed\lifecycle-livedata-core-ktx-2.7.0\res
+com.example.cleansmart.app-emoji2-views-helper-1.2.0-10 C:\Users\PC\.gradle\caches\8.11.1\transforms\7004c8a2346ba97c6f133bca4041ee6a\transformed\emoji2-views-helper-1.2.0\res
+com.example.cleansmart.app-lifecycle-service-2.7.0-11 C:\Users\PC\.gradle\caches\8.11.1\transforms\70117228c89a2bcd0c787c48940addb3\transformed\lifecycle-service-2.7.0\res
+com.example.cleansmart.app-lifecycle-runtime-2.7.0-12 C:\Users\PC\.gradle\caches\8.11.1\transforms\73038fb2ca0418337a44e294b34181b3\transformed\lifecycle-runtime-2.7.0\res
+com.example.cleansmart.app-lifecycle-viewmodel-savedstate-2.7.0-13 C:\Users\PC\.gradle\caches\8.11.1\transforms\80eccf3649ccf840cadb4ca8be444677\transformed\lifecycle-viewmodel-savedstate-2.7.0\res
+com.example.cleansmart.app-appcompat-1.6.1-14 C:\Users\PC\.gradle\caches\8.11.1\transforms\847ac1db3c518ca8926a511cf06fec5b\transformed\appcompat-1.6.1\res
+com.example.cleansmart.app-activity-1.8.0-15 C:\Users\PC\.gradle\caches\8.11.1\transforms\856786782799c7d00455037e51042faf\transformed\activity-1.8.0\res
+com.example.cleansmart.app-cardview-1.0.0-16 C:\Users\PC\.gradle\caches\8.11.1\transforms\866856126346c05863b30bd0c26c4236\transformed\cardview-1.0.0\res
+com.example.cleansmart.app-lifecycle-livedata-core-2.7.0-17 C:\Users\PC\.gradle\caches\8.11.1\transforms\9009547d26e3c936cf341157cf23e2fb\transformed\lifecycle-livedata-core-2.7.0\res
+com.example.cleansmart.app-emoji2-1.2.0-18 C:\Users\PC\.gradle\caches\8.11.1\transforms\93e5ccdeea9608427676ece1d6741d41\transformed\emoji2-1.2.0\res
+com.example.cleansmart.app-profileinstaller-1.3.0-19 C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\res
+com.example.cleansmart.app-savedstate-1.2.1-20 C:\Users\PC\.gradle\caches\8.11.1\transforms\a492bf6076abdc378c6e1a6c957fbbc8\transformed\savedstate-1.2.1\res
+com.example.cleansmart.app-databinding-runtime-8.9.1-21 C:\Users\PC\.gradle\caches\8.11.1\transforms\a7063be7e55e4b7a6fa1312eb2d6512e\transformed\databinding-runtime-8.9.1\res
+com.example.cleansmart.app-lifecycle-viewmodel-ktx-2.7.0-22 C:\Users\PC\.gradle\caches\8.11.1\transforms\a76491eaa1f90349436e76c82d0cd5ad\transformed\lifecycle-viewmodel-ktx-2.7.0\res
+com.example.cleansmart.app-core-runtime-2.2.0-23 C:\Users\PC\.gradle\caches\8.11.1\transforms\aa24f7f98cb75023ff5b1fee9a3b7ca0\transformed\core-runtime-2.2.0\res
+com.example.cleansmart.app-coordinatorlayout-1.1.0-24 C:\Users\PC\.gradle\caches\8.11.1\transforms\b130d4ba7403a2ad086190f3ffc5c833\transformed\coordinatorlayout-1.1.0\res
+com.example.cleansmart.app-startup-runtime-1.1.1-25 C:\Users\PC\.gradle\caches\8.11.1\transforms\c0503d5169e1fae3fd673def5ffa4778\transformed\startup-runtime-1.1.1\res
+com.example.cleansmart.app-core-ktx-1.12.0-26 C:\Users\PC\.gradle\caches\8.11.1\transforms\c105b8b0d83e0e4b346eae15587ce421\transformed\core-ktx-1.12.0\res
+com.example.cleansmart.app-drawerlayout-1.1.1-27 C:\Users\PC\.gradle\caches\8.11.1\transforms\c2106a3c2e0deb3c7773d4a4bcf868be\transformed\drawerlayout-1.1.1\res
+com.example.cleansmart.app-lifecycle-process-2.7.0-28 C:\Users\PC\.gradle\caches\8.11.1\transforms\cdbfbe5b684bf7873b901473ba9cffc0\transformed\lifecycle-process-2.7.0\res
+com.example.cleansmart.app-security-crypto-1.1.0-alpha06-29 C:\Users\PC\.gradle\caches\8.11.1\transforms\db0ac32f43c0a9f4621bf2a8ea5b576b\transformed\security-crypto-1.1.0-alpha06\res
+com.example.cleansmart.app-core-1.12.0-30 C:\Users\PC\.gradle\caches\8.11.1\transforms\db7945cccb940c7f9100c59c1ea5f0b6\transformed\core-1.12.0\res
+com.example.cleansmart.app-fragment-1.3.6-31 C:\Users\PC\.gradle\caches\8.11.1\transforms\dd2776e434b4afe7eb2e1226e540e60e\transformed\fragment-1.3.6\res
+com.example.cleansmart.app-recyclerview-1.1.0-32 C:\Users\PC\.gradle\caches\8.11.1\transforms\e6429bedd2dc622920fb34dbf4bfc50c\transformed\recyclerview-1.1.0\res
+com.example.cleansmart.app-constraintlayout-2.1.4-33 C:\Users\PC\.gradle\caches\8.11.1\transforms\ec48c86670bd30089569b79706092135\transformed\constraintlayout-2.1.4\res
+com.example.cleansmart.app-material-1.11.0-34 C:\Users\PC\.gradle\caches\8.11.1\transforms\f26d1c041244c4f992851d2bb1f8939d\transformed\material-1.11.0\res
+com.example.cleansmart.app-pngs-35 C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\build\generated\res\pngs\debug
+com.example.cleansmart.app-resValues-36 C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\build\generated\res\resValues\debug
+com.example.cleansmart.app-packageDebugResources-37 C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.cleansmart.app-packageDebugResources-38 C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.cleansmart.app-debug-39 C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.cleansmart.app-debug-40 C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\debug\res
+com.example.cleansmart.app-main-41 C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\res
