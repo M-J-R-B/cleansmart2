@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme -->
+    <style name="Theme.CleanSmart" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand colors -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand colors -->
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorSecondaryVariant">@color/mint</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Accent color -->
+        <item name="colorAccent">@color/accent_color</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/primary_color</item>
+
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/text_primary_color</item>
+        <item name="android:textColorSecondary">@color/text_secondary_color</item>
+
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/background_color</item>
+
+        <!-- Custom attributes -->
+        <item name="cardBackgroundColor">@color/card_background</item>
+    </style>
+
+    <!-- Dark theme variant -->
+    <style name="Theme.CleanSmart.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand colors -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorOnPrimary">@color/black</item>
+
+        <!-- Secondary brand colors -->
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorSecondaryVariant">@color/mint</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Accent color -->
+        <item name="colorAccent">@color/accent_color</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/black</item>
+
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/grey</item>
+
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/black</item>
+
+        <!-- Custom attributes -->
+        <item name="cardBackgroundColor">@color/grey</item>
+    </style>
+
+    <!-- Text Styles -->
+    <style name="TextAppearance.CleanSmart.Headline" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.CleanSmart.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.CleanSmart.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="Widget.CleanSmart.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+    </style>
+
+    <style name="Widget.CleanSmart.Button.Secondary" parent="Widget.CleanSmart.Button">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+    </style>
+
+    <style name="Widget.CleanSmart.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- Card Styles -->
+    <style name="Widget.CleanSmart.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="contentPadding">16dp</item>
+        <item name="cardBackgroundColor">?attr/cardBackgroundColor</item>
+    </style>
+
+    <!-- Switch styles -->
+    <style name="Widget.CleanSmart.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="colorControlActivated">@color/secondary_color</item>
+        <item name="colorSwitchThumbNormal">@color/white</item>
+        <item name="android:colorForeground">@color/gray</item>
+    </style>
+
+    <!-- Shape styles -->
+    <style name="ShapeAppearance.CleanSmart.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearance.CleanSmart.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.CleanSmart.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.TopRounded" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeTopRight">24dp</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+</resources>

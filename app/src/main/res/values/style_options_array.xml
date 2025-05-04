@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="style_options">
+        <item>Default</item>
+        <item>Minimalist</item>
+        <item>Classic</item>
+        <item>Modern</item>
+        <item>Colorful</item>
+    </string-array>
+</resources>
