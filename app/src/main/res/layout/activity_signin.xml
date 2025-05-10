@@ -26,14 +26,19 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
-
+                <ImageButton
+                    android:id="@+id/backButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_back"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/back_button"
+                    android:padding="12dp" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="1" />
-
-
             </LinearLayout>
 
             <!-- Logo section -->
@@ -77,12 +82,19 @@
                     android:padding="24dp">
 
                     <!-- Welcome text -->
-                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sign In"
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/details"
+                        android:text="Enter your credentials to continue"
                         android:textColor="#FFFFFF"
                         android:layout_marginBottom="24dp" />
 
@@ -93,13 +105,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:hint="@string/email_label"
+                        android:hint="Email"
                         app:boxStrokeColor="#FFFFFF"
                         app:hintTextColor="#FFFFFF"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etUsername"
+                            android:id="@+id/etEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
@@ -116,7 +128,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:hint="@string/password_label"
+                        android:hint="Password"
                         app:boxStrokeColor="#FFFFFF"
                         app:hintTextColor="#FFFFFF"
                         app:errorEnabled="true"
@@ -145,8 +157,9 @@
                             android:id="@+id/rememberMeCheckbox"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/remember_me"
-                            android:textColor="#FFFFFF" />
+                            android:text="Remember me"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="16dp" />
 
                         <View
                             android:layout_width="0dp"
@@ -157,12 +170,15 @@
                             android:id="@+id/forgotPasswordText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/forgot_password"
+                            android:text="Forgot Password?"
                             android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:padding="8dp"
-                            android:background="?attr/selectableItemBackgroundBorderless" />
+                            android:background="?attr/selectableItemBackground"
+                            android:padding="4dp" />
                     </LinearLayout>
 
                     <!-- Sign in button -->
@@ -170,7 +186,7 @@
                         android:id="@+id/btnSignIn"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
-                        android:text="@string/sign_in"
+                        android:text="Sign In"
                         android:textAllCaps="false"
                         android:textSize="16sp"
                         app:cornerRadius="28dp"

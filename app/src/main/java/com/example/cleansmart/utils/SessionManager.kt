@@ -13,8 +13,8 @@ class SessionManager(context: Context) {
     
     companion object {
         private const val PREF_NAME = "CleanSmartSession"
-        private const val KEY_USER_EMAIL = "user_email"
         private const val KEY_USER_NAME = "user_name"
+        private const val KEY_USER_EMAIL = "user_email"
         private const val KEY_IS_LOGGED_IN = "is_logged_in"
     }
     
@@ -33,27 +33,21 @@ class SessionManager(context: Context) {
     private val editor: SharedPreferences.Editor = sharedPreferences.edit()
     
     /**
+     * Save user name to shared preferences
+     */
+    fun saveUserName(name: String) {
+        editor.putString(KEY_USER_NAME, name)
+        editor.putBoolean(KEY_IS_LOGGED_IN, true)
+        editor.apply()
+    }
+    
+    /**
      * Save user email to shared preferences
      */
     fun saveUserEmail(email: String) {
         editor.putString(KEY_USER_EMAIL, email)
         editor.putBoolean(KEY_IS_LOGGED_IN, true)
         editor.apply()
-    }
-    
-    /**
-     * Save user name to shared preferences
-     */
-    fun saveUserName(name: String) {
-        editor.putString(KEY_USER_NAME, name)
-        editor.apply()
-    }
-    
-    /**
-     * Get user email from shared preferences
-     */
-    fun getUserEmail(): String? {
-        return sharedPreferences.getString(KEY_USER_EMAIL, null)
     }
     
     /**
@@ -64,6 +58,13 @@ class SessionManager(context: Context) {
     }
     
     /**
+     * Get user email from shared preferences
+     */
+    fun getUserEmail(): String? {
+        return sharedPreferences.getString(KEY_USER_EMAIL, null)
+    }
+    
+    /**
      * Check if user is logged in
      */
     fun isLoggedIn(): Boolean {
@@ -71,7 +72,7 @@ class SessionManager(context: Context) {
     }
     
     /**
-     * Clear session data (logout)
+     * Clear user session
      */
     fun clearSession() {
         editor.clear()
