@@ -141,6 +141,7 @@ id etConfirmPassword
 id etEmail
 id etName
 id etPassword
+id etUsername
 id expand_icon
 id forgotPasswordText
 id fun_fact_text
@@ -364,4 +365,3 @@ style Widget.CleanSmart.CardView
 style Widget.CleanSmart.Switch
 xml backup_rules
 xml data_extraction_rules
-xml network_security_config

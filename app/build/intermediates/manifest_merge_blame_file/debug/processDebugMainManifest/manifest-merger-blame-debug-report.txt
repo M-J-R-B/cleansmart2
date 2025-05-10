@@ -9,221 +9,233 @@
 9        android:targetSdkVersion="34" />
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:6:5-67
-11-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:6:22-64
+11-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:6:22-64
 12    <uses-permission android:name="android.permission.CAMERA" />
-12-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:7:5-65
-12-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:7:22-62
-13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-13-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:8:5-79
-13-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:8:22-76
-14
-15    <uses-feature
-15-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:9:5-85
-16        android:name="android.hardware.camera"
-16-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:9:19-57
-17        android:required="false" />
-17-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:9:58-82
-18
-19    <permission
-19-->[androidx.core:core:1.12.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\db7945cccb940c7f9100c59c1ea5f0b6\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
-20        android:name="com.example.cleansmart.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-20-->[androidx.core:core:1.12.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\db7945cccb940c7f9100c59c1ea5f0b6\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
-21        android:protectionLevel="signature" />
-21-->[androidx.core:core:1.12.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\db7945cccb940c7f9100c59c1ea5f0b6\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
-22
-23    <uses-permission android:name="com.example.cleansmart.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-23-->[androidx.core:core:1.12.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\db7945cccb940c7f9100c59c1ea5f0b6\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
-23-->[androidx.core:core:1.12.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\db7945cccb940c7f9100c59c1ea5f0b6\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+12-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:7:5-65
+12-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:7:22-62
+13
+14    <uses-feature
+14-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:8:5-85
+15        android:name="android.hardware.camera"
+15-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:8:19-57
+16        android:required="false" />
+16-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:8:58-82
+17
+18    <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
+18-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\user\.gradle\caches\8.10.2\transforms\e598cdc554676e615ef495374858d459\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:22:5-72
+18-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\user\.gradle\caches\8.10.2\transforms\e598cdc554676e615ef495374858d459\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:22:22-69
+19    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+19-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\user\.gradle\caches\8.10.2\transforms\e598cdc554676e615ef495374858d459\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:25:5-74
+19-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\user\.gradle\caches\8.10.2\transforms\e598cdc554676e615ef495374858d459\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:25:22-71
+20
+21    <permission
+21-->[androidx.core:core:1.12.0] C:\Users\user\.gradle\caches\8.10.2\transforms\f537fbdaca71759ca0a3652b028879d9\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+22        android:name="com.example.cleansmart.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+22-->[androidx.core:core:1.12.0] C:\Users\user\.gradle\caches\8.10.2\transforms\f537fbdaca71759ca0a3652b028879d9\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+23        android:protectionLevel="signature" />
+23-->[androidx.core:core:1.12.0] C:\Users\user\.gradle\caches\8.10.2\transforms\f537fbdaca71759ca0a3652b028879d9\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
 24
-25    <application
-25-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:11:5-73:19
-26        android:allowBackup="true"
-26-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:12:9-35
-27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-27-->[androidx.core:core:1.12.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\db7945cccb940c7f9100c59c1ea5f0b6\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
-28        android:dataExtractionRules="@xml/data_extraction_rules"
-28-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:13:9-65
-29        android:debuggable="true"
-30        android:extractNativeLibs="false"
-31        android:fullBackupContent="@xml/backup_rules"
-31-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:14:9-54
-32        android:icon="@mipmap/ic_launcher"
-32-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:15:9-43
-33        android:label="@string/app_name"
-33-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:16:9-41
-34        android:networkSecurityConfig="@xml/network_security_config"
-34-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:21:9-69
-35        android:roundIcon="@mipmap/ic_launcher_round"
-35-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:17:9-54
-36        android:supportsRtl="true"
-36-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:18:9-35
-37        android:testOnly="true"
-38        android:theme="@style/Theme.CleanSmart"
-38-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:19:9-48
-39        android:usesCleartextTraffic="true" >
-39-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:20:9-44
+25    <uses-permission android:name="com.example.cleansmart.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+25-->[androidx.core:core:1.12.0] C:\Users\user\.gradle\caches\8.10.2\transforms\f537fbdaca71759ca0a3652b028879d9\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+25-->[androidx.core:core:1.12.0] C:\Users\user\.gradle\caches\8.10.2\transforms\f537fbdaca71759ca0a3652b028879d9\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+26
+27    <application
+27-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:10:5-71:19
+28        android:allowBackup="true"
+28-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:12:9-35
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.12.0] C:\Users\user\.gradle\caches\8.10.2\transforms\f537fbdaca71759ca0a3652b028879d9\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+30        android:dataExtractionRules="@xml/data_extraction_rules"
+30-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:13:9-65
+31        android:debuggable="true"
+32        android:extractNativeLibs="false"
+33        android:fullBackupContent="@xml/backup_rules"
+33-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:14:9-54
+34        android:icon="@mipmap/ic_launcher"
+34-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:15:9-43
+35        android:label="@string/app_name"
+35-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:16:9-41
+36        android:roundIcon="@mipmap/ic_launcher_round"
+36-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:17:9-54
+37        android:supportsRtl="true"
+37-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:18:9-35
+38        android:testOnly="true"
+39        android:theme="@style/Theme.CleanSmart" >
+39-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:19:9-48
 40        <activity
-40-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:23:9-26:55
+40-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:21:9-24:55
 41            android:name="com.example.cleansmart.SignUpActivity"
-41-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:24:13-43
+41-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:22:13-43
 42            android:exported="false"
-42-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:25:13-37
+42-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:23:13-37
 43            android:theme="@style/Theme.CleanSmart" />
-43-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:26:13-52
+43-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:24:13-52
 44        <activity
-44-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:28:9-30:40
+44-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:26:9-28:40
 45            android:name="com.example.cleansmart.ProfileUpdateSuccessActivity"
-45-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:29:13-57
+45-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:27:13-57
 46            android:exported="false" />
-46-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:30:13-37
+46-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:28:13-37
 47        <activity
-47-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:31:9-33:40
+47-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:29:9-31:40
 48            android:name="com.example.cleansmart.EditProfileActivity"
-48-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:32:13-48
+48-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:30:13-48
 49            android:exported="false" />
-49-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:33:13-37
+49-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:31:13-37
 50        <activity
-50-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:34:9-36:40
+50-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:32:9-34:40
 51            android:name="com.example.cleansmart.ProfileActivity"
-51-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:35:13-44
+51-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:33:13-44
 52            android:exported="false" />
-52-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:36:13-37
+52-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:34:13-37
 53        <activity
-53-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:37:9-39:40
+53-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:35:9-37:40
 54            android:name="com.example.cleansmart.LandingActivity"
-54-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:38:13-44
+54-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:36:13-44
 55            android:exported="false" />
-55-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:39:13-37
+55-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:37:13-37
 56        <activity
-56-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:41:9-43:40
+56-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:39:9-41:40
 57            android:name="com.example.cleansmart.LoginConfirmation"
-57-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:42:13-46
+57-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:40:13-46
 58            android:exported="false" />
-58-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:43:13-37
+58-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:41:13-37
 59        <activity
-59-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:44:9-46:40
+59-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:42:9-44:40
 60            android:name="com.example.cleansmart.AboutDevsActivity"
-60-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:45:13-46
+60-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:43:13-46
 61            android:exported="false" />
-61-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:46:13-37
+61-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:44:13-37
 62        <activity
-62-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:47:9-49:40
+62-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:45:9-47:40
 63            android:name="com.example.cleansmart.SettingsActivity"
-63-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:48:13-45
+63-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:46:13-45
 64            android:exported="false" />
-64-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:49:13-37
+64-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:47:13-37
 65        <activity
-65-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:50:9-52:40
+65-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:48:9-50:40
 66            android:name="com.example.cleansmart.ChangePasswordActivity"
-66-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:51:13-51
+66-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:49:13-51
 67            android:exported="false" />
-67-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:52:13-37
+67-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:50:13-37
 68        <activity
-68-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:53:9-55:40
+68-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:51:9-53:40
 69            android:name="com.example.cleansmart.ForgotPasswordActivity"
-69-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:54:13-51
+69-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:52:13-51
 70            android:exported="false" />
-70-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:55:13-37
+70-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:53:13-37
 71        <activity
-71-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:56:9-59:45
+71-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:54:9-57:45
 72            android:name="com.example.cleansmart.ListViewDemoActivity"
-72-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:57:13-49
+72-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:55:13-49
 73            android:exported="false"
-73-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:58:13-37
+73-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:56:13-37
 74            android:label="ListView Demo" />
-74-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:59:13-42
+74-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:57:13-42
 75        <activity
-75-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:60:9-62:40
+75-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:58:9-60:40
 76            android:name="com.example.cleansmart.TasksActivity"
-76-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:61:13-42
+76-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:59:13-42
 77            android:exported="false" />
-77-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:62:13-37
+77-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:60:13-37
 78        <activity
-78-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:63:9-71:20
+78-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:61:9-69:20
 79            android:name="com.example.cleansmart.SignInActivity"
-79-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:64:13-43
+79-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:62:13-43
 80            android:exported="true"
-80-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:65:13-36
+80-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:63:13-36
 81            android:theme="@style/Theme.CleanSmart" >
-81-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:66:13-52
+81-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:64:13-52
 82            <intent-filter>
-82-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:67:13-70:29
+82-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:65:13-68:29
 83                <action android:name="android.intent.action.MAIN" />
-83-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:68:17-69
-83-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:68:25-66
+83-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:66:17-69
+83-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:66:25-66
 84
 85                <category android:name="android.intent.category.LAUNCHER" />
-85-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:69:17-77
-85-->C:\Users\PC\Desktop\School\3rd Year 2nd Sem\IMDBSYS32\SEMIFINAL-FINALS\cleansmart2\app\src\main\AndroidManifest.xml:69:27-74
+85-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:67:17-77
+85-->C:\Users\user\Documents\cleansmart2\app\src\main\AndroidManifest.xml:67:27-74
 86            </intent-filter>
 87        </activity>
-88
-89        <provider
-89-->[androidx.emoji2:emoji2:1.2.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\93e5ccdeea9608427676ece1d6741d41\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-90            android:name="androidx.startup.InitializationProvider"
-90-->[androidx.emoji2:emoji2:1.2.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\93e5ccdeea9608427676ece1d6741d41\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
-91            android:authorities="com.example.cleansmart.androidx-startup"
-91-->[androidx.emoji2:emoji2:1.2.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\93e5ccdeea9608427676ece1d6741d41\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
-92            android:exported="false" >
-92-->[androidx.emoji2:emoji2:1.2.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\93e5ccdeea9608427676ece1d6741d41\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
-93            <meta-data
-93-->[androidx.emoji2:emoji2:1.2.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\93e5ccdeea9608427676ece1d6741d41\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-94                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-94-->[androidx.emoji2:emoji2:1.2.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\93e5ccdeea9608427676ece1d6741d41\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
-95                android:value="androidx.startup" />
-95-->[androidx.emoji2:emoji2:1.2.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\93e5ccdeea9608427676ece1d6741d41\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
-96            <meta-data
-96-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\cdbfbe5b684bf7873b901473ba9cffc0\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
-97                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-97-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\cdbfbe5b684bf7873b901473ba9cffc0\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
-98                android:value="androidx.startup" />
-98-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\cdbfbe5b684bf7873b901473ba9cffc0\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+88        <activity
+88-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\user\.gradle\caches\8.10.2\transforms\d421cdf6edc5e03e01381c72924bce6c\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+89            android:name="androidx.compose.ui.tooling.PreviewActivity"
+89-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\user\.gradle\caches\8.10.2\transforms\d421cdf6edc5e03e01381c72924bce6c\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+90            android:exported="true" />
+90-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\user\.gradle\caches\8.10.2\transforms\d421cdf6edc5e03e01381c72924bce6c\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+91        <activity
+91-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\user\.gradle\caches\8.10.2\transforms\da9217170796d976e8123738a8479699\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:23:9-25:39
+92            android:name="androidx.activity.ComponentActivity"
+92-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\user\.gradle\caches\8.10.2\transforms\da9217170796d976e8123738a8479699\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:24:13-63
+93            android:exported="true" />
+93-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\user\.gradle\caches\8.10.2\transforms\da9217170796d976e8123738a8479699\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:25:13-36
+94
+95        <provider
+95-->[androidx.emoji2:emoji2:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\6b78152e4a1805c9012df87a051d5a1f\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+96            android:name="androidx.startup.InitializationProvider"
+96-->[androidx.emoji2:emoji2:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\6b78152e4a1805c9012df87a051d5a1f\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+97            android:authorities="com.example.cleansmart.androidx-startup"
+97-->[androidx.emoji2:emoji2:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\6b78152e4a1805c9012df87a051d5a1f\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+98            android:exported="false" >
+98-->[androidx.emoji2:emoji2:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\6b78152e4a1805c9012df87a051d5a1f\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
 99            <meta-data
-99-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
-100                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-100-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+99-->[androidx.emoji2:emoji2:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\6b78152e4a1805c9012df87a051d5a1f\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+100                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+100-->[androidx.emoji2:emoji2:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\6b78152e4a1805c9012df87a051d5a1f\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
 101                android:value="androidx.startup" />
-101-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
-102        </provider>
-103
-104        <receiver
-104-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
-105            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-105-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
-106            android:directBootAware="false"
-106-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
-107            android:enabled="true"
-107-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
-108            android:exported="true"
-108-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
-109            android:permission="android.permission.DUMP" >
-109-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
-110            <intent-filter>
-110-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
-111                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-111-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
-111-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
-112            </intent-filter>
-113            <intent-filter>
-113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
-114                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-114-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
-114-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
-115            </intent-filter>
+101-->[androidx.emoji2:emoji2:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\6b78152e4a1805c9012df87a051d5a1f\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+102            <meta-data
+102-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\user\.gradle\caches\8.10.2\transforms\571e7bddd394ab6ef1cf78269c37b430\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:29:13-31:52
+103                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+103-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\user\.gradle\caches\8.10.2\transforms\571e7bddd394ab6ef1cf78269c37b430\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:30:17-78
+104                android:value="androidx.startup" />
+104-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\user\.gradle\caches\8.10.2\transforms\571e7bddd394ab6ef1cf78269c37b430\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:31:17-49
+105            <meta-data
+105-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+106                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+106-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+107                android:value="androidx.startup" />
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+108        </provider>
+109
+110        <receiver
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+111            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+111-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+112            android:directBootAware="false"
+112-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+113            android:enabled="true"
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+114            android:exported="true"
+114-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+115            android:permission="android.permission.DUMP" >
+115-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
 116            <intent-filter>
-116-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
-117                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
-117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+117                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
 118            </intent-filter>
 119            <intent-filter>
-119-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
-120                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-120-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
-120-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\PC\.gradle\caches\8.11.1\transforms\9cc45f18cdc2282a90c77516606d78b5\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+120                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+120-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+120-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
 121            </intent-filter>
-122        </receiver>
-123    </application>
-124
-125</manifest>
+122            <intent-filter>
+122-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+123                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+123-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+123-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+124            </intent-filter>
+125            <intent-filter>
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+126                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+126-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+126-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\user\.gradle\caches\8.10.2\transforms\d0ddfda3acd1c945c8be795cb3cb8804\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+127            </intent-filter>
+128        </receiver>
+129    </application>
+130
+131</manifest>
