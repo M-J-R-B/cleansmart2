@@ -54,10 +54,10 @@ com.example.cleansmart.app-biometric-1.2.0-alpha05-52 C:\Users\user\.gradle\cach
 com.example.cleansmart.app-animation-release-53 C:\Users\user\.gradle\caches\8.10.2\transforms\f077c2bc09c6097fb2d1e1eddc0b7727\transformed\animation-release\res
 com.example.cleansmart.app-core-1.12.0-54 C:\Users\user\.gradle\caches\8.10.2\transforms\f537fbdaca71759ca0a3652b028879d9\transformed\core-1.12.0\res
 com.example.cleansmart.app-ui-tooling-data-release-55 C:\Users\user\.gradle\caches\8.10.2\transforms\f8ab8dda5186011c52a46a13c714e55c\transformed\ui-tooling-data-release\res
-com.example.cleansmart.app-pngs-56 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\build\generated\res\pngs\debug
-com.example.cleansmart.app-resValues-57 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\build\generated\res\resValues\debug
-com.example.cleansmart.app-packageDebugResources-58 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.cleansmart.app-packageDebugResources-59 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.cleansmart.app-debug-60 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.example.cleansmart.app-debug-61 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\src\debug\res
-com.example.cleansmart.app-main-62 C:\Users\user\Downloads\CleanSmart-master (1)\CleanSmart-master\CleanSmart\CleanSmart\app\src\main\res
+com.example.cleansmart.app-pngs-56 C:\Users\user\Documents\cleansmart2\app\build\generated\res\pngs\debug
+com.example.cleansmart.app-resValues-57 C:\Users\user\Documents\cleansmart2\app\build\generated\res\resValues\debug
+com.example.cleansmart.app-packageDebugResources-58 C:\Users\user\Documents\cleansmart2\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.cleansmart.app-packageDebugResources-59 C:\Users\user\Documents\cleansmart2\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.cleansmart.app-debug-60 C:\Users\user\Documents\cleansmart2\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.cleansmart.app-debug-61 C:\Users\user\Documents\cleansmart2\app\src\debug\res
+com.example.cleansmart.app-main-62 C:\Users\user\Documents\cleansmart2\app\src\main\res
