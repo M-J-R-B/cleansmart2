@@ -17,6 +17,20 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @POST("auth/logout")
     suspend fun logout(): Response<LogoutResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("auth/forgot-password")
+    suspend fun forgotPassword(@Body request: ForgotPasswordRequest): Response<ForgotPasswordResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("auth/change-password")
+    suspend fun changePassword(@Body request: ChangePasswordRequest): Response<ChangePasswordResponse>
+
+    companion object {
+        fun create(): ApiService {
+            return NetworkClient.apiService
+        }
+    }
 }
 
 data class SignupRequest(
@@ -43,6 +57,26 @@ data class UserData(
 )
 
 data class LogoutResponse(
+    val success: Boolean,
+    val message: String
+)
+
+data class ForgotPasswordRequest(
+    val email: String
+)
+
+data class ForgotPasswordResponse(
+    val success: Boolean,
+    val message: String
+)
+
+data class ChangePasswordRequest(
+    val email: String,
+    val oldPassword: String,
+    val newPassword: String
+)
+
+data class ChangePasswordResponse(
     val success: Boolean,
     val message: String
 ) 

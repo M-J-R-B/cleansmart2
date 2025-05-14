@@ -1,6 +1,8 @@
 package com.example.cleansmart.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cleansmart.databinding.ActivityProfileBinding
 import com.google.android.material.appbar.AppBarLayout
@@ -33,11 +35,21 @@ class ProfileActivity : AppCompatActivity() {
         })
 
         binding.editButton.setOnClickListener {
-            // TODO: Implement edit profile functionality
+            try {
+                val intent = Intent(this, EditProfileActivity::class.java)
+                startActivity(intent)
+            } catch (e: Exception) {
+                Toast.makeText(this, "Error opening edit profile screen", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.changePasswordButton.setOnClickListener {
-            // TODO: Implement settings functionality
+            try {
+                val intent = Intent(this, ChangePasswordActivity::class.java)
+                startActivity(intent)
+            } catch (e: Exception) {
+                Toast.makeText(this, "Error opening change password screen", Toast.LENGTH_SHORT).show()
+            }
         }
     }
-} 
+}

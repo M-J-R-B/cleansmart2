@@ -29,10 +29,13 @@
             android:name=".ProfileUpdateSuccessActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".activities.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activities.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ChangePasswordActivity"
             android:exported="false" />
         <activity
             android:name=".LandingActivity"
@@ -46,9 +49,6 @@
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ChangePasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
@@ -67,6 +67,12 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="cleansmart"
+                    android:host="login" />
             </intent-filter>
         </activity>
 

@@ -4,6 +4,7 @@ package com.example.cleansmart.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +23,9 @@ public final class ActivityAboutDevsBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final ImageButton backButton;
+
+  @NonNull
   public final LayoutBottomNavigationBinding bottomNavigation;
 
   @NonNull
@@ -37,10 +41,11 @@ public final class ActivityAboutDevsBinding implements ViewBinding {
   public final CardView visionCard;
 
   private ActivityAboutDevsBinding(@NonNull ConstraintLayout rootView,
-      @NonNull LayoutBottomNavigationBinding bottomNavigation, @NonNull TextView subtitleText,
-      @NonNull RecyclerView teamMembersRecyclerView, @NonNull TextView titleText,
-      @NonNull CardView visionCard) {
+      @NonNull ImageButton backButton, @NonNull LayoutBottomNavigationBinding bottomNavigation,
+      @NonNull TextView subtitleText, @NonNull RecyclerView teamMembersRecyclerView,
+      @NonNull TextView titleText, @NonNull CardView visionCard) {
     this.rootView = rootView;
+    this.backButton = backButton;
     this.bottomNavigation = bottomNavigation;
     this.subtitleText = subtitleText;
     this.teamMembersRecyclerView = teamMembersRecyclerView;
@@ -75,6 +80,12 @@ public final class ActivityAboutDevsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.back_button;
+      ImageButton backButton = ViewBindings.findChildViewById(rootView, id);
+      if (backButton == null) {
+        break missingId;
+      }
+
       id = R.id.bottomNavigation;
       View bottomNavigation = ViewBindings.findChildViewById(rootView, id);
       if (bottomNavigation == null) {
@@ -106,8 +117,8 @@ public final class ActivityAboutDevsBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityAboutDevsBinding((ConstraintLayout) rootView, binding_bottomNavigation,
-          subtitleText, teamMembersRecyclerView, titleText, visionCard);
+      return new ActivityAboutDevsBinding((ConstraintLayout) rootView, backButton,
+          binding_bottomNavigation, subtitleText, teamMembersRecyclerView, titleText, visionCard);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

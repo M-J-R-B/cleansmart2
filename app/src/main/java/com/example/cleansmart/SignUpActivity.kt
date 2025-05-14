@@ -26,6 +26,7 @@ import java.io.IOException
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
     private lateinit var sessionManager: SessionManager
+    private lateinit var secureStorage: SecureStorageManager
     private val TAG = "SignUpActivity"
     private val gson = Gson()
 
@@ -35,6 +36,7 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sessionManager = SessionManager(this)
+        secureStorage = SecureStorageManager.getInstance(this)
         setupClickListeners()
     }
 
@@ -62,17 +64,17 @@ class SignUpActivity : AppCompatActivity() {
                 binding.progressBar.visibility = View.VISIBLE
                 binding.btnSignUp.visibility = View.INVISIBLE
                 
-                val fullName = binding.etName.text.toString().trim()
+                val name = binding.etName.text.toString().trim()
                 val email = binding.etEmail.text.toString().trim()
                 val password = binding.etPassword.text.toString()
 
-                Log.d(TAG, "Attempting registration with fullName: $fullName, email: $email")
+                Log.d(TAG, "Attempting registration with fullName: $name, email: $email")
                 Log.d(TAG, "Network available: ${isNetworkAvailable()}")
 
                 CoroutineScope(Dispatchers.IO).launch {
                     try {
                         Log.d(TAG, "Making signup network request")
-                        val signupRequest = SignupRequest(fullName, email, password)
+                        val signupRequest = SignupRequest(fullName = name, email = email, password = password)
                         Log.d(TAG, "Request body: $signupRequest")
                         
                         val response = NetworkClient.apiService.signup(signupRequest)
@@ -89,6 +91,8 @@ class SignUpActivity : AppCompatActivity() {
                                         Log.d(TAG, "Registration successful for user: ${user.email}")
                                         sessionManager.saveUserName(user.fullName)
                                         sessionManager.saveUserEmail(user.email)
+                                        secureStorage.saveEmail(user.email)
+                                        secureStorage.saveUserId(user.id)
 
                                         Toast.makeText(this@SignUpActivity, "Registration successful!", Toast.LENGTH_SHORT).show()
                                         

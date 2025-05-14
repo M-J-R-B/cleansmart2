@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.cleansmart.databinding.ActivitySigninBinding
 import com.example.cleansmart.network.LoginRequest
 import com.example.cleansmart.network.NetworkClient
+import com.example.cleansmart.utils.SecureStorageManager
 import com.example.cleansmart.utils.SessionManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +19,7 @@ import kotlinx.coroutines.withContext
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySigninBinding
     private lateinit var sessionManager: SessionManager
+    private lateinit var secureStorage: SecureStorageManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sessionManager = SessionManager(this)
+        secureStorage = SecureStorageManager.getInstance(this)
         setupClickListeners()
     }
 
@@ -53,8 +56,11 @@ class SignInActivity : AppCompatActivity() {
                             if (response.isSuccessful && response.body()?.success == true) {
                                 val user = response.body()?.user
                                 if (user != null) {
+                                    // Save user data in both storage managers
                                     sessionManager.saveUserName(user.fullName)
                                     sessionManager.saveUserEmail(user.email)
+                                    secureStorage.saveEmail(user.email)
+                                    secureStorage.saveUserId(user.id)
 
                                     Toast.makeText(this@SignInActivity, "Sign in successful!", Toast.LENGTH_SHORT).show()
                                     

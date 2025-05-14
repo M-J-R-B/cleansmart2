@@ -4,10 +4,7 @@ package com.example.cleansmart.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -16,6 +13,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.cleansmart.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -28,49 +28,49 @@ public final class ActivityChangePasswordBinding implements ViewBinding {
   public final ImageButton backButton;
 
   @NonNull
-  public final EditText confirmPasswordEditText;
+  public final MaterialButton btnChangePassword;
 
   @NonNull
-  public final LinearLayout logoContainer;
+  public final TextInputLayout confirmPasswordLayout;
 
   @NonNull
-  public final EditText newPasswordEditText;
+  public final TextInputEditText etConfirmPassword;
 
   @NonNull
-  public final EditText oldPasswordEditText;
+  public final TextInputEditText etNewPassword;
 
   @NonNull
-  public final ProgressBar passwordStrengthBar;
+  public final TextInputEditText etOldPassword;
 
   @NonNull
-  public final TextView passwordStrengthText;
+  public final TextInputLayout newPasswordLayout;
+
+  @NonNull
+  public final TextInputLayout oldPasswordLayout;
 
   @NonNull
   public final ProgressBar progressBar;
 
   @NonNull
-  public final Button saveButton;
-
-  @NonNull
-  public final SuccessCheckLayoutBinding successCheck;
+  public final TextView titleTextView;
 
   private ActivityChangePasswordBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageButton backButton, @NonNull EditText confirmPasswordEditText,
-      @NonNull LinearLayout logoContainer, @NonNull EditText newPasswordEditText,
-      @NonNull EditText oldPasswordEditText, @NonNull ProgressBar passwordStrengthBar,
-      @NonNull TextView passwordStrengthText, @NonNull ProgressBar progressBar,
-      @NonNull Button saveButton, @NonNull SuccessCheckLayoutBinding successCheck) {
+      @NonNull ImageButton backButton, @NonNull MaterialButton btnChangePassword,
+      @NonNull TextInputLayout confirmPasswordLayout, @NonNull TextInputEditText etConfirmPassword,
+      @NonNull TextInputEditText etNewPassword, @NonNull TextInputEditText etOldPassword,
+      @NonNull TextInputLayout newPasswordLayout, @NonNull TextInputLayout oldPasswordLayout,
+      @NonNull ProgressBar progressBar, @NonNull TextView titleTextView) {
     this.rootView = rootView;
     this.backButton = backButton;
-    this.confirmPasswordEditText = confirmPasswordEditText;
-    this.logoContainer = logoContainer;
-    this.newPasswordEditText = newPasswordEditText;
-    this.oldPasswordEditText = oldPasswordEditText;
-    this.passwordStrengthBar = passwordStrengthBar;
-    this.passwordStrengthText = passwordStrengthText;
+    this.btnChangePassword = btnChangePassword;
+    this.confirmPasswordLayout = confirmPasswordLayout;
+    this.etConfirmPassword = etConfirmPassword;
+    this.etNewPassword = etNewPassword;
+    this.etOldPassword = etOldPassword;
+    this.newPasswordLayout = newPasswordLayout;
+    this.oldPasswordLayout = oldPasswordLayout;
     this.progressBar = progressBar;
-    this.saveButton = saveButton;
-    this.successCheck = successCheck;
+    this.titleTextView = titleTextView;
   }
 
   @Override
@@ -106,39 +106,45 @@ public final class ActivityChangePasswordBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.confirmPasswordEditText;
-      EditText confirmPasswordEditText = ViewBindings.findChildViewById(rootView, id);
-      if (confirmPasswordEditText == null) {
+      id = R.id.btnChangePassword;
+      MaterialButton btnChangePassword = ViewBindings.findChildViewById(rootView, id);
+      if (btnChangePassword == null) {
         break missingId;
       }
 
-      id = R.id.logoContainer;
-      LinearLayout logoContainer = ViewBindings.findChildViewById(rootView, id);
-      if (logoContainer == null) {
+      id = R.id.confirmPasswordLayout;
+      TextInputLayout confirmPasswordLayout = ViewBindings.findChildViewById(rootView, id);
+      if (confirmPasswordLayout == null) {
         break missingId;
       }
 
-      id = R.id.newPasswordEditText;
-      EditText newPasswordEditText = ViewBindings.findChildViewById(rootView, id);
-      if (newPasswordEditText == null) {
+      id = R.id.etConfirmPassword;
+      TextInputEditText etConfirmPassword = ViewBindings.findChildViewById(rootView, id);
+      if (etConfirmPassword == null) {
         break missingId;
       }
 
-      id = R.id.oldPasswordEditText;
-      EditText oldPasswordEditText = ViewBindings.findChildViewById(rootView, id);
-      if (oldPasswordEditText == null) {
+      id = R.id.etNewPassword;
+      TextInputEditText etNewPassword = ViewBindings.findChildViewById(rootView, id);
+      if (etNewPassword == null) {
         break missingId;
       }
 
-      id = R.id.passwordStrengthBar;
-      ProgressBar passwordStrengthBar = ViewBindings.findChildViewById(rootView, id);
-      if (passwordStrengthBar == null) {
+      id = R.id.etOldPassword;
+      TextInputEditText etOldPassword = ViewBindings.findChildViewById(rootView, id);
+      if (etOldPassword == null) {
         break missingId;
       }
 
-      id = R.id.passwordStrengthText;
-      TextView passwordStrengthText = ViewBindings.findChildViewById(rootView, id);
-      if (passwordStrengthText == null) {
+      id = R.id.newPasswordLayout;
+      TextInputLayout newPasswordLayout = ViewBindings.findChildViewById(rootView, id);
+      if (newPasswordLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.oldPasswordLayout;
+      TextInputLayout oldPasswordLayout = ViewBindings.findChildViewById(rootView, id);
+      if (oldPasswordLayout == null) {
         break missingId;
       }
 
@@ -148,22 +154,15 @@ public final class ActivityChangePasswordBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.saveButton;
-      Button saveButton = ViewBindings.findChildViewById(rootView, id);
-      if (saveButton == null) {
+      id = R.id.titleTextView;
+      TextView titleTextView = ViewBindings.findChildViewById(rootView, id);
+      if (titleTextView == null) {
         break missingId;
       }
-
-      id = R.id.successCheck;
-      View successCheck = ViewBindings.findChildViewById(rootView, id);
-      if (successCheck == null) {
-        break missingId;
-      }
-      SuccessCheckLayoutBinding binding_successCheck = SuccessCheckLayoutBinding.bind(successCheck);
 
       return new ActivityChangePasswordBinding((ConstraintLayout) rootView, backButton,
-          confirmPasswordEditText, logoContainer, newPasswordEditText, oldPasswordEditText,
-          passwordStrengthBar, passwordStrengthText, progressBar, saveButton, binding_successCheck);
+          btnChangePassword, confirmPasswordLayout, etConfirmPassword, etNewPassword, etOldPassword,
+          newPasswordLayout, oldPasswordLayout, progressBar, titleTextView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

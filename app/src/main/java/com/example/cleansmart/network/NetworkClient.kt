@@ -11,7 +11,7 @@ import okhttp3.ResponseBody.Companion.toResponseBody
 import com.google.gson.Gson
 
 object NetworkClient {
-    private const val BASE_URL = "http://10.0.2.2:5000/api/" // Added /api/ to match backend URL structure
+    private const val BASE_URL = "http://192.168.1.9:5000/api/" // Added /api/ to match backend URL structure
     private const val TIMEOUT_SECONDS = 30L
     private const val TAG = "NetworkClient"
     private val gson = Gson()
@@ -59,6 +59,10 @@ object NetworkClient {
             }
         } catch (e: Exception) {
             Log.e(TAG, "Network error during request to ${request.url}", e)
+            // Log more details about the error
+            Log.e(TAG, "Error type: ${e.javaClass.simpleName}")
+            Log.e(TAG, "Error message: ${e.message}")
+            Log.e(TAG, "Stack trace: ${e.stackTraceToString()}")
             throw e
         }
     }

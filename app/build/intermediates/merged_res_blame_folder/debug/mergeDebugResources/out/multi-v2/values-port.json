@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.cleansmart.app-mergeDebugResources-37:/values-port/values-port.xml",
+            "outputFile": "com.example.cleansmart.app-mergeDebugResources-39:/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\PC\\.gradle\\caches\\8.11.1\\transforms\\847ac1db3c518ca8926a511cf06fec5b\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\8.11.1\\transforms\\910dc9b688ffc995a15e9ab09538288f\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
