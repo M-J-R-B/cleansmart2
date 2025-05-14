@@ -9,6 +9,9 @@ import com.example.cleansmart.network.ApiService
 import com.example.cleansmart.network.ChangePasswordRequest
 import com.example.cleansmart.utils.SecureStorageManager
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
+import javax.net.ssl.SSLHandshakeException
+import java.io.IOException
 
 sealed class ChangePasswordState {
     object Loading : ChangePasswordState()
@@ -45,6 +48,18 @@ class ChangePasswordViewModel : ViewModel() {
                         response.body()?.message ?: "Failed to change password"
                     )
                 }
+            } catch (e: SSLHandshakeException) {
+                _changePasswordState.value = ChangePasswordState.Error(
+                    "Network security error: SSL Certificate issue. Please check your connection."
+                )
+            } catch (e: UnknownHostException) {
+                _changePasswordState.value = ChangePasswordState.Error(
+                    "Network error: Cannot reach server. Please check your connection."
+                )
+            } catch (e: IOException) {
+                _changePasswordState.value = ChangePasswordState.Error(
+                    "Network error: ${e.message ?: "Connection problem occurred"}"
+                )
             } catch (e: Exception) {
                 _changePasswordState.value = ChangePasswordState.Error(
                     e.message ?: "An error occurred while changing password"

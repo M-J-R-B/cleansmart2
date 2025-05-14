@@ -91,7 +91,7 @@ class SignInActivity : AppCompatActivity() {
 
     private fun validateInputs(): Boolean {
         // Temporarily bypass validation by always returning true
-        //return true
+
 
         // Original validation code (currently unreachable)
         var isValid = true

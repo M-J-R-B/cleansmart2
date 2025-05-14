@@ -41,8 +41,8 @@ class ProfileActivity : AppCompatActivity() {
             // TODO: Implement settings functionality
         }
         
-        binding.backButton.setOnClickListener {
-            onBackPressed()
-        }
+//        binding.backButton.setOnClickListener {
+//            onBackPressed()
+//        }
     }
 } 

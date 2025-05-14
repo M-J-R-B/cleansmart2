@@ -31,4 +31,9 @@
     <color name="mint">#26A69A</color>
     <color name="grey">#F5F7FA</color>
     <color name="black">#000000</color>
+
+    <!-- Priority Colors -->
+    <color name="priority_high">#E74C3C</color> <!-- Red -->
+    <color name="priority_medium">#F39C12</color> <!-- Orange -->
+    <color name="priority_low">#27AE60</color> <!-- Green -->
 </resources>
