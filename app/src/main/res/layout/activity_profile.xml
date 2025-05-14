@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/gradient_background"
         android:fitsSystemWindows="true">
 
@@ -18,73 +18,65 @@
             android:layout_height="250dp"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/primary_color"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-            android:padding="16dp"
+                android:padding="16dp"
                 app:layout_collapseMode="parallax">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profileImage"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profileImage"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_marginTop="32dp"
                     android:elevation="4dp"
                     android:padding="4dp"
-                android:scaleType="centerCrop"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/placeholder_profile"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/CircleImageView"
-                app:strokeColor="@color/white"
-                app:strokeWidth="2dp" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/CircleImageView"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="2dp" />
 
-            <TextView
-                android:id="@+id/profileName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/profileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Your Name"
-                android:textColor="#FFFFFF"
+                    android:textColor="#FFFFFF"
                     android:textSize="24sp"
-                android:textStyle="bold"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profileImage" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profileImage" />
 
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
                 app:layout_collapseMode="pin">
 
-                <ImageButton
-                    android:id="@+id/backButton"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:padding="4dp"
-                    android:src="@drawable/ic_back"
-                    app:tint="#FFFFFF" />
-
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="110dp"
                     android:text="Profile"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-
             </androidx.appcompat.widget.Toolbar>
+
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -141,43 +133,44 @@
 
                         <LinearLayout
                             android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:textColor="#666666"
+                                android:text="Email"
+                                android:textColor="#666666"
                                 android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/emailValue"
+                            <TextView
+                                android:id="@+id/emailValue"
                                 android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:text="email@example.com"
                                 android:textColor="#333333"
                                 android:textSize="16sp" />
                         </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/editEmailIcon"
+                        <ImageView
+                            android:id="@+id/editEmailIcon"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
                             android:padding="2dp"
-                    android:src="@drawable/baseline_edit_24"
+                            android:src="@drawable/baseline_edit_24"
                             app:tint="@color/primary_color" />
                     </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
                         android:layout_marginVertical="12dp"
                         android:background="#EEEEEE" />
 
+                    <!-- Rest of the layout content remains the same -->
                     <!-- Username Section -->
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -198,35 +191,35 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Username"
-                    android:textColor="#666666"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Username"
+                                android:textColor="#666666"
                                 android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/usernameValue"
+                            <TextView
+                                android:id="@+id/usernameValue"
                                 android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:text="username"
                                 android:textColor="#333333"
                                 android:textSize="16sp" />
                         </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/editUsernameIcon"
+                        <ImageView
+                            android:id="@+id/editUsernameIcon"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
                             android:padding="2dp"
-                    android:src="@drawable/baseline_edit_24"
+                            android:src="@drawable/baseline_edit_24"
                             app:tint="@color/primary_color" />
                     </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
                         android:layout_marginVertical="12dp"
                         android:background="#EEEEEE" />
 
@@ -250,35 +243,35 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phone"
-                    android:textColor="#666666"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Phone"
+                                android:textColor="#666666"
                                 android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/phoneValue"
+                            <TextView
+                                android:id="@+id/phoneValue"
                                 android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:text="+1234567890"
                                 android:textColor="#333333"
                                 android:textSize="16sp" />
                         </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/editPhoneIcon"
+                        <ImageView
+                            android:id="@+id/editPhoneIcon"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
                             android:padding="2dp"
-                    android:src="@drawable/baseline_edit_24"
+                            android:src="@drawable/baseline_edit_24"
                             app:tint="@color/primary_color" />
                     </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
                         android:layout_marginVertical="12dp"
                         android:background="#EEEEEE" />
 
@@ -302,29 +295,29 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Address"
-                    android:textColor="#666666"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Address"
+                                android:textColor="#666666"
                                 android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/addressValue"
+                            <TextView
+                                android:id="@+id/addressValue"
                                 android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:text="Your Address"
                                 android:textColor="#333333"
                                 android:textSize="16sp" />
                         </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/editAddressIcon"
+                        <ImageView
+                            android:id="@+id/editAddressIcon"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
                             android:padding="2dp"
-                    android:src="@drawable/baseline_edit_24"
+                            android:src="@drawable/baseline_edit_24"
                             app:tint="@color/primary_color" />
                     </LinearLayout>
 
@@ -333,8 +326,8 @@
 
             <!-- Preferences Card -->
             <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">

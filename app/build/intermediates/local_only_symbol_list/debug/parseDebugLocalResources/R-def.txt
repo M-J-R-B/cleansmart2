@@ -106,8 +106,10 @@ id addressEditText
 id addressValue
 id appBarLayout
 id backButton
+id back_button
 id bottomNavCard
 id bottomNavigation
+id btnChangePassword
 id btnSignIn
 id btnSignUp
 id calendarIcon1
@@ -118,8 +120,8 @@ id cancelButton
 id changePasswordButton
 id changePhotoText
 id codeEditText
-id confirmPasswordEditText
 id confirmPasswordInputLayout
+id confirmPasswordLayout
 id content
 id continueButton
 id customListView
@@ -140,6 +142,8 @@ id emailValue
 id etConfirmPassword
 id etEmail
 id etName
+id etNewPassword
+id etOldPassword
 id etPassword
 id etUsername
 id expand_icon
@@ -174,12 +178,10 @@ id menuIcon2
 id nameEditText
 id nameInputLayout
 id nestedScrollView
-id newPasswordEditText
+id newPasswordLayout
 id notificationsLayout
-id oldPasswordEditText
+id oldPasswordLayout
 id passwordInputLayout
-id passwordStrengthBar
-id passwordStrengthText
 id phoneEditText
 id phoneValue
 id photoSection
@@ -212,7 +214,6 @@ id styleSpinner
 id styleValue
 id subtitle_text
 id successCard
-id successCheck
 id successIcon
 id successLayout
 id taskCard1
@@ -227,6 +228,7 @@ id timeIcon1
 id timeIcon2
 id timeText1
 id timeText2
+id titleTextView
 id title_text
 id todoTitle1
 id todoTitle2

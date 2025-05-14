@@ -13,6 +13,13 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class SignUpActivity : AppCompatActivity() {
+<<<<<<< HEAD
+    private lateinit var binding: ActivitySignupBinding
+    private lateinit var sessionManager: SessionManager
+    private lateinit var secureStorage: SecureStorageManager
+    private val TAG = "SignUpActivity"
+    private val gson = Gson()
+=======
     // UI components
     private lateinit var nameInputLayout: TextInputLayout
     private lateinit var emailInputLayout: TextInputLayout
@@ -28,15 +35,21 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var signInLink: TextView
     private lateinit var backButton: ImageButton
     private lateinit var progressBar: CircularProgressIndicator
+>>>>>>> 086021e2a7e25b0261746b47f0be3ba38a178411
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
+<<<<<<< HEAD
+        sessionManager = SessionManager(this)
+        secureStorage = SecureStorageManager.getInstance(this)
+=======
         // Initialize UI components
         initializeViews()
         
         // Set click listeners
+>>>>>>> 086021e2a7e25b0261746b47f0be3ba38a178411
         setupClickListeners()
     }
 
@@ -70,6 +83,59 @@ class SignUpActivity : AppCompatActivity() {
                 progressBar.visibility = View.VISIBLE
                 btnSignUp.visibility = View.INVISIBLE
                 
+<<<<<<< HEAD
+                val name = binding.etName.text.toString().trim()
+                val email = binding.etEmail.text.toString().trim()
+                val password = binding.etPassword.text.toString()
+
+                Log.d(TAG, "Attempting registration with fullName: $name, email: $email")
+                Log.d(TAG, "Network available: ${isNetworkAvailable()}")
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
+                        Log.d(TAG, "Making signup network request")
+                        val signupRequest = SignupRequest(fullName = name, email = email, password = password)
+                        Log.d(TAG, "Request body: $signupRequest")
+                        
+                        val response = NetworkClient.apiService.signup(signupRequest)
+                        Log.d(TAG, "Response received: ${response.code()}")
+                        
+                        withContext(Dispatchers.Main) {
+                            binding.progressBar.visibility = View.GONE
+                            binding.btnSignUp.visibility = View.VISIBLE
+
+                            when {
+                                response.isSuccessful && response.body()?.success == true -> {
+                                    val user = response.body()?.user
+                                    if (user != null) {
+                                        Log.d(TAG, "Registration successful for user: ${user.email}")
+                                        sessionManager.saveUserName(user.fullName)
+                                        sessionManager.saveUserEmail(user.email)
+                                        secureStorage.saveEmail(user.email)
+                                        secureStorage.saveUserId(user.id)
+
+                                        Toast.makeText(this@SignUpActivity, "Registration successful!", Toast.LENGTH_SHORT).show()
+                                        
+                                        Intent(this@SignUpActivity, SignInActivity::class.java).also { 
+                                            it.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                                            startActivity(it)
+                                            finish()
+                                        }
+                                    }
+                                }
+                                else -> {
+                                    val errorMessage = response.body()?.message ?: "Registration failed"
+                                    Toast.makeText(this@SignUpActivity, errorMessage, Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            binding.progressBar.visibility = View.GONE
+                            binding.btnSignUp.visibility = View.VISIBLE
+                            Toast.makeText(this@SignUpActivity, "Network error: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+=======
                 // Here you would normally implement registration
                 // For now, just simulate a delay and success
                 btnSignUp.postDelayed({
@@ -84,6 +150,7 @@ class SignUpActivity : AppCompatActivity() {
                         it.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(it)
                         finish()
+>>>>>>> 086021e2a7e25b0261746b47f0be3ba38a178411
                     }
                 }, 1500)
             }

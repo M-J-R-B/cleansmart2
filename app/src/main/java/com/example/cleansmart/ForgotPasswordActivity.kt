@@ -7,11 +7,13 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.cleansmart.viewmodels.ForgotPasswordViewModel
+import com.example.cleansmart.viewmodels.ForgotPasswordState
 
-class ForgotPasswordActivity : FragmentActivity() {
-    private val TAG = "ForgotPasswordActivity"
-    
+class ForgotPasswordActivity : AppCompatActivity() {
+    private lateinit var viewModel: ForgotPasswordViewModel
     private lateinit var emailEditText: EditText
     private lateinit var resetButton: Button
     private lateinit var backButton: ImageButton
@@ -21,7 +23,8 @@ class ForgotPasswordActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
-        // Initialize MongoDB Auth Manager
+        // Initialize ViewModel
+        viewModel = ViewModelProvider(this)[ForgotPasswordViewModel::class.java]
 
         // Initialize views
         emailEditText = findViewById(R.id.emailPhoneEditText)
@@ -34,6 +37,7 @@ class ForgotPasswordActivity : FragmentActivity() {
         findViewById<Button>(R.id.resendCodeButton).visibility = View.GONE
 
         setupClickListeners()
+        observeViewModel()
     }
 
     private fun setupClickListeners() {
@@ -44,16 +48,32 @@ class ForgotPasswordActivity : FragmentActivity() {
         resetButton.setOnClickListener {
             val email = emailEditText.text.toString()
             if (validateEmail(email)) {
-                sendPasswordResetEmail(email)
+                viewModel.requestPasswordReset(email)
+            }
+        }
+    }
+
+    private fun observeViewModel() {
+        viewModel.forgotPasswordState.observe(this) { state ->
+            when (state) {
+                is ForgotPasswordState.Loading -> showLoading(true)
+                is ForgotPasswordState.Success -> {
+                    showLoading(false)
+                    showSuccess(state.message)
+                    // Navigate back to SignInActivity after a short delay
+                    resetButton.postDelayed({
+                        finish()
+                    }, 1500)
+                }
+                is ForgotPasswordState.Error -> {
+                    showLoading(false)
+                    showError(state.message)
+                }
             }
         }
     }
 
     private fun validateEmail(email: String): Boolean {
-        // Temporarily bypass validation by always returning true
-        return true
-        
-        /* Original validation code (commented out to avoid compilation issues)
         if (email.isEmpty()) {
             emailEditText.error = "Email is required"
             return false
@@ -63,22 +83,6 @@ class ForgotPasswordActivity : FragmentActivity() {
             return false
         }
         return true
-        */
-    }
-
-    private fun sendPasswordResetEmail(email: String) {
-        showLoading(true)
-        
-        // Simulate network delay and successful password reset
-        resetButton.postDelayed({
-            showLoading(false)
-            showSuccess("Password reset instructions sent to your email")
-            
-            // Navigate back to SignInActivity after a short delay
-            resetButton.postDelayed({
-                finish()
-            }, 1500)
-        }, 1500)
     }
 
     private fun showLoading(show: Boolean) {

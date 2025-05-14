@@ -1,6 +1,7 @@
 package com.example.cleansmart
 
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +22,10 @@ class AboutDevsActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about_devs)
 
+        val backButton = findViewById<ImageButton>(R.id.back_button) // Make sure this ID matches
+        backButton?.setOnClickListener {
+            finish() // This will go back to the previous activity (SettingsActivity)
+        }
 
         // Sample team member data
         val teamMembers = listOf(

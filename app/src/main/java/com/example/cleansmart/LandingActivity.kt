@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.cleansmart.activities.ProfileActivity
 import com.example.cleansmart.databinding.ActivityLandingBinding
 import com.example.cleansmart.utils.SecureStorageManager
 import kotlinx.coroutines.Dispatchers

@@ -45,10 +45,13 @@
             android:name="com.example.cleansmart.ProfileUpdateSuccessActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.cleansmart.EditProfileActivity"
+            android:name="com.example.cleansmart.activities.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.cleansmart.ProfileActivity"
+            android:name="com.example.cleansmart.activities.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.cleansmart.activities.ChangePasswordActivity"
             android:exported="false" />
         <activity
             android:name="com.example.cleansmart.LandingActivity"
@@ -61,9 +64,6 @@
             android:exported="false" />
         <activity
             android:name="com.example.cleansmart.SettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.cleansmart.ChangePasswordActivity"
             android:exported="false" />
         <activity
             android:name="com.example.cleansmart.ForgotPasswordActivity"
@@ -83,6 +83,15 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="login"
+                    android:scheme="cleansmart" />
             </intent-filter>
         </activity>
         <activity

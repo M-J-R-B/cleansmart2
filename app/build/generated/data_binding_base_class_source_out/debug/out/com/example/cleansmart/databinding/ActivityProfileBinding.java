@@ -4,7 +4,6 @@ package com.example.cleansmart.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -31,9 +30,6 @@ public final class ActivityProfileBinding implements ViewBinding {
 
   @NonNull
   public final AppBarLayout appBarLayout;
-
-  @NonNull
-  public final ImageButton backButton;
 
   @NonNull
   public final MaterialButton changePasswordButton;
@@ -85,18 +81,17 @@ public final class ActivityProfileBinding implements ViewBinding {
 
   private ActivityProfileBinding(@NonNull CoordinatorLayout rootView,
       @NonNull TextView addressValue, @NonNull AppBarLayout appBarLayout,
-      @NonNull ImageButton backButton, @NonNull MaterialButton changePasswordButton,
-      @NonNull ImageView editAddressIcon, @NonNull MaterialButton editButton,
-      @NonNull ImageView editEmailIcon, @NonNull ImageView editPhoneIcon,
-      @NonNull ImageView editUsernameIcon, @NonNull TextView emailValue,
-      @NonNull CoordinatorLayout main, @NonNull NestedScrollView nestedScrollView,
-      @NonNull TextView phoneValue, @NonNull ShapeableImageView profileImage,
-      @NonNull TextView profileName, @NonNull ImageView styleSelectorIcon,
-      @NonNull TextView styleValue, @NonNull Toolbar toolbar, @NonNull TextView usernameValue) {
+      @NonNull MaterialButton changePasswordButton, @NonNull ImageView editAddressIcon,
+      @NonNull MaterialButton editButton, @NonNull ImageView editEmailIcon,
+      @NonNull ImageView editPhoneIcon, @NonNull ImageView editUsernameIcon,
+      @NonNull TextView emailValue, @NonNull CoordinatorLayout main,
+      @NonNull NestedScrollView nestedScrollView, @NonNull TextView phoneValue,
+      @NonNull ShapeableImageView profileImage, @NonNull TextView profileName,
+      @NonNull ImageView styleSelectorIcon, @NonNull TextView styleValue, @NonNull Toolbar toolbar,
+      @NonNull TextView usernameValue) {
     this.rootView = rootView;
     this.addressValue = addressValue;
     this.appBarLayout = appBarLayout;
-    this.backButton = backButton;
     this.changePasswordButton = changePasswordButton;
     this.editAddressIcon = editAddressIcon;
     this.editButton = editButton;
@@ -151,12 +146,6 @@ public final class ActivityProfileBinding implements ViewBinding {
       id = R.id.appBarLayout;
       AppBarLayout appBarLayout = ViewBindings.findChildViewById(rootView, id);
       if (appBarLayout == null) {
-        break missingId;
-      }
-
-      id = R.id.backButton;
-      ImageButton backButton = ViewBindings.findChildViewById(rootView, id);
-      if (backButton == null) {
         break missingId;
       }
 
@@ -253,9 +242,9 @@ public final class ActivityProfileBinding implements ViewBinding {
       }
 
       return new ActivityProfileBinding((CoordinatorLayout) rootView, addressValue, appBarLayout,
-          backButton, changePasswordButton, editAddressIcon, editButton, editEmailIcon,
-          editPhoneIcon, editUsernameIcon, emailValue, main, nestedScrollView, phoneValue,
-          profileImage, profileName, styleSelectorIcon, styleValue, toolbar, usernameValue);
+          changePasswordButton, editAddressIcon, editButton, editEmailIcon, editPhoneIcon,
+          editUsernameIcon, emailValue, main, nestedScrollView, phoneValue, profileImage,
+          profileName, styleSelectorIcon, styleValue, toolbar, usernameValue);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
