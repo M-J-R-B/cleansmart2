@@ -74,6 +74,9 @@ public final class ActivityProfileBinding implements ViewBinding {
   public final TextView styleValue;
 
   @NonNull
+  public final TextView tapToChangeText;
+
+  @NonNull
   public final Toolbar toolbar;
 
   @NonNull
@@ -87,7 +90,8 @@ public final class ActivityProfileBinding implements ViewBinding {
       @NonNull TextView emailValue, @NonNull CoordinatorLayout main,
       @NonNull NestedScrollView nestedScrollView, @NonNull TextView phoneValue,
       @NonNull ShapeableImageView profileImage, @NonNull TextView profileName,
-      @NonNull ImageView styleSelectorIcon, @NonNull TextView styleValue, @NonNull Toolbar toolbar,
+      @NonNull ImageView styleSelectorIcon, @NonNull TextView styleValue,
+      @NonNull TextView tapToChangeText, @NonNull Toolbar toolbar,
       @NonNull TextView usernameValue) {
     this.rootView = rootView;
     this.addressValue = addressValue;
@@ -106,6 +110,7 @@ public final class ActivityProfileBinding implements ViewBinding {
     this.profileName = profileName;
     this.styleSelectorIcon = styleSelectorIcon;
     this.styleValue = styleValue;
+    this.tapToChangeText = tapToChangeText;
     this.toolbar = toolbar;
     this.usernameValue = usernameValue;
   }
@@ -229,6 +234,12 @@ public final class ActivityProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tapToChangeText;
+      TextView tapToChangeText = ViewBindings.findChildViewById(rootView, id);
+      if (tapToChangeText == null) {
+        break missingId;
+      }
+
       id = R.id.toolbar;
       Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
@@ -244,7 +255,7 @@ public final class ActivityProfileBinding implements ViewBinding {
       return new ActivityProfileBinding((CoordinatorLayout) rootView, addressValue, appBarLayout,
           changePasswordButton, editAddressIcon, editButton, editEmailIcon, editPhoneIcon,
           editUsernameIcon, emailValue, main, nestedScrollView, phoneValue, profileImage,
-          profileName, styleSelectorIcon, styleValue, toolbar, usernameValue);
+          profileName, styleSelectorIcon, styleValue, tapToChangeText, toolbar, usernameValue);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

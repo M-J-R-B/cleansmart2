@@ -13,8 +13,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleansmart.activities.CameraTaskActivity
 import com.example.cleansmart.activities.ProfileActivity
+import com.example.cleansmart.adapters.TaskGroupAdapter
 import com.example.cleansmart.databinding.ActivityLandingBinding
 import com.example.cleansmart.dialogs.TaskDetailsDialog
 import com.example.cleansmart.models.TaskDataTransfer
@@ -22,6 +24,7 @@ import com.example.cleansmart.models.TaskGroup
 import com.example.cleansmart.network.ApiService
 import com.example.cleansmart.repository.TaskGroupRepository
 import com.example.cleansmart.utils.SecureStorageManager
+import com.example.cleansmart.utils.SessionManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -31,13 +34,12 @@ import java.util.Locale
 
 class LandingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLandingBinding
-    // Store task data for later use
-    private var taskDataCard1: TaskDataTransfer? = null
-    private var taskDataCard2: TaskDataTransfer? = null
-    
+    // Adapter for task groups
+    private lateinit var taskGroupAdapter: TaskGroupAdapter
     // Repository for task groups
     private lateinit var taskGroupRepository: TaskGroupRepository
     private lateinit var secureStorageManager: SecureStorageManager
+    private lateinit var sessionManager: SessionManager
     
     // Track saved task groups
     private var savedTaskGroups: MutableList<TaskGroup> = mutableListOf()
@@ -86,12 +88,56 @@ class LandingActivity : AppCompatActivity() {
         binding = ActivityLandingBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        // Initialize repositories
+        // Initialize repositories and managers
         taskGroupRepository = TaskGroupRepository(ApiService.create())
         secureStorageManager = SecureStorageManager.getInstance(this)
+        sessionManager = SessionManager(this)
 
+        setupRecyclerView()
         setupClickListeners()
         loadUserTaskGroups()
+        updateUserGreeting()
+        
+        // Comment out or remove the test task group creation
+        // val userId = secureStorageManager.getUserId()
+        // if (userId != null) {
+        //     createTestTaskGroup(userId)
+        // }
+    }
+    
+    private fun setupRecyclerView() {
+        // Initialize the adapter with empty list
+        taskGroupAdapter = TaskGroupAdapter(
+            this,
+            emptyList(),
+            { taskGroup -> 
+                // Handle click on task group
+                showTaskDetails(taskGroupRepository.convertToTaskDataTransfer(taskGroup))
+            },
+            { taskGroup ->
+                // Handle long press on task group (for deletion)
+                showDeleteTaskGroupDialog(taskGroupRepository.convertToTaskDataTransfer(taskGroup))
+                true
+            }
+        )
+        
+        // Set up RecyclerView
+        binding.taskGroupsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(this@LandingActivity)
+            adapter = taskGroupAdapter
+        }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        
+        // Reload task groups when returning to this activity
+        loadUserTaskGroups()
+        
+        // Update user greeting in case name was changed in profile
+        updateUserGreeting()
+        
+        Log.d("LandingActivity", "onResume: Reloading task groups")
     }
     
     private fun loadUserTaskGroups() {
@@ -107,7 +153,7 @@ class LandingActivity : AppCompatActivity() {
                         
                         // Update UI with loaded task groups
                         withContext(Dispatchers.Main) {
-                            updateDashboardWithTaskGroups(taskGroups)
+                            updateTaskGroupsRecyclerView(taskGroups)
                         }
                     } else {
                         val error = result.exceptionOrNull()?.message ?: "Unknown error"
@@ -120,26 +166,18 @@ class LandingActivity : AppCompatActivity() {
         }
     }
     
-    private fun updateDashboardWithTaskGroups(taskGroups: List<TaskGroup>) {
-        if (taskGroups.isEmpty()) return
-        
-        // Clear existing task cards first
-        binding.taskCard1.visibility = View.GONE
-        binding.taskCard2.visibility = View.GONE
-        taskDataCard1 = null
-        taskDataCard2 = null
-        
-        // Display up to 2 task groups on the dashboard
-        taskGroups.take(2).forEachIndexed { index, taskGroup ->
-            val taskData = taskGroupRepository.convertToTaskDataTransfer(taskGroup)
+    private fun updateTaskGroupsRecyclerView(taskGroups: List<TaskGroup>) {
+        if (taskGroups.isEmpty()) {
+            // Show empty state
+            binding.emptyTasksText.visibility = View.VISIBLE
+            binding.taskGroupsRecyclerView.visibility = View.GONE
+        } else {
+            // Show task groups
+            binding.emptyTasksText.visibility = View.GONE
+            binding.taskGroupsRecyclerView.visibility = View.VISIBLE
             
-            if (index == 0) {
-                taskDataCard1 = taskData
-                updateTaskCard1WithTaskData(taskData, taskGroup.progress)
-            } else if (index == 1) {
-                taskDataCard2 = taskData
-                updateTaskCard2WithTaskData(taskData, taskGroup.progress)
-            }
+            // Update the adapter
+            taskGroupAdapter.updateTaskGroups(taskGroups)
         }
     }
 
@@ -152,8 +190,14 @@ class LandingActivity : AppCompatActivity() {
                     if (result.isSuccess) {
                         val savedTaskGroup = result.getOrNull()
                         if (savedTaskGroup != null) {
+                            // Add to the local list
                             savedTaskGroups.add(savedTaskGroup)
                             Log.d("LandingActivity", "Task group saved successfully: ${savedTaskGroup.id}")
+                            
+                            // Refresh the RecyclerView
+                            withContext(Dispatchers.Main) {
+                                updateTaskGroupsRecyclerView(savedTaskGroups)
+                            }
                         }
                     } else {
                         val error = result.exceptionOrNull()?.message ?: "Unknown error"
@@ -181,8 +225,13 @@ class LandingActivity : AppCompatActivity() {
         binding.bottomNavigation.profileButton.setOnClickListener {
             Log.d("Android Assignment", "Profile button clicked")
             
-            // Navigate to profile screen
-            startActivity(Intent(this, ProfileActivity::class.java))
+            // Navigate to profile screen with error handling 
+            try {
+                startActivity(Intent(this, ProfileActivity::class.java))
+            } catch (e: Exception) {
+                Log.e("Android Assignment", "Error opening Profile: ${e.message}")
+                Toast.makeText(this, "Error: Profile screen not available", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.bottomNavigation.settingsButton.setOnClickListener {
@@ -233,19 +282,6 @@ class LandingActivity : AppCompatActivity() {
         binding.cameraFab.setOnClickListener {
             navigateToCameraTaskActivity()
         }
-
-        // Set up click listeners for task cards
-        binding.taskCard1.setOnClickListener {
-            taskDataCard1?.let { data ->
-                showTaskDetails(data)
-            }
-        }
-
-        binding.taskCard2.setOnClickListener {
-            taskDataCard2?.let { data ->
-                showTaskDetails(data)
-            }
-        }
     }
 
     private fun navigateToCameraTaskActivity() {
@@ -259,19 +295,20 @@ class LandingActivity : AppCompatActivity() {
     }
 
     private fun updateDashboardWithTaskData(taskData: TaskDataTransfer) {
-        // Calculate progress percentage (for demo purposes, random between 0-40%)
-        val progressPercentage = (0..40).random()
+        // Convert TaskDataTransfer to TaskGroup with 0% progress
+        val newTaskGroup = TaskGroup(
+            id = taskData.id,
+            userId = secureStorageManager.getUserId() ?: "",
+            areaName = taskData.areaName,
+            imageBase64 = taskData.imageBase64,
+            tasks = taskData.taskTitles,
+            progress = 0,
+            dateCreated = taskData.dateCreated
+        )
         
-        // Check if card1 is already used, if so use card2
-        if (taskDataCard1 == null) {
-            // Update Card 1
-            taskDataCard1 = taskData
-            updateTaskCard1WithTaskData(taskData, progressPercentage)
-        } else {
-            // Update Card 2
-            taskDataCard2 = taskData
-            updateTaskCard2WithTaskData(taskData, progressPercentage)
-        }
+        // Add to our list and update RecyclerView
+        savedTaskGroups.add(newTaskGroup)
+        updateTaskGroupsRecyclerView(savedTaskGroups)
         
         // Show a success message
         Toast.makeText(
@@ -281,43 +318,15 @@ class LandingActivity : AppCompatActivity() {
         ).show()
     }
     
-    private fun updateTaskCard1WithTaskData(taskData: TaskDataTransfer, progressPercentage: Int) {
-        // Format the date for display
-        val dateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
-        val formattedDate = dateFormat.format(Date(taskData.dateCreated))
-        
-        binding.apply {
-            dateText1.text = formattedDate
-            todoTitle1.text = "${taskData.areaName} Tasks"
-            progressBar1.progress = progressPercentage
-            progressLabel1.text = "Progress: $progressPercentage%"
-            timeText1.text = "${taskData.numberOfTasks} tasks to complete"
-            
-            // Make Card 1 visible
-            taskCard1.visibility = View.VISIBLE
-        }
-    }
-    
-    private fun updateTaskCard2WithTaskData(taskData: TaskDataTransfer, progressPercentage: Int) {
-        // Format the date for display
-        val dateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
-        val formattedDate = dateFormat.format(Date(taskData.dateCreated))
-        
-        binding.apply {
-            dateText2.text = formattedDate
-            todoTitle2.text = "${taskData.areaName} Tasks"
-            progressBar2.progress = progressPercentage
-            progressLabel2.text = "Progress: $progressPercentage%"
-            timeText2.text = "${taskData.numberOfTasks} tasks to complete"
-            
-            // Make Card 2 visible
-            taskCard2.visibility = View.VISIBLE
-        }
-    }
-    
     private fun showTaskDetails(taskData: TaskDataTransfer) {
-        val dialog = TaskDetailsDialog(this, taskData)
-        dialog.show()
+        // Log the ID being passed for tracking purposes
+        Log.d("LandingActivity", "Opening task group with ID: ${taskData.id}")
+        
+        // Navigate to TasksActivity instead of showing dialog
+        val intent = Intent(this, TasksActivity::class.java).apply {
+            putExtra("task_group_id", taskData.id)
+        }
+        startActivity(intent)
     }
 
     private fun checkCameraPermissionAndOpen() {
@@ -341,6 +350,97 @@ class LandingActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Toast.makeText(this, "Unable to open camera", Toast.LENGTH_SHORT).show()
             Log.e("Android Assignment", "Error opening camera: ${e.message}")
+        }
+    }
+
+    // Method to create a test task group for debugging
+    private fun createTestTaskGroup(userId: String) {
+        // Only run this in debug builds or when explicitly testing
+        val testTaskData = TaskDataTransfer(
+            areaName = "Test Area ${System.currentTimeMillis()}",
+            numberOfTasks = 3,
+            taskTitles = listOf("Test Task 1", "Test Task 2", "Test Task 3")
+        )
+        
+        Log.d("LandingActivity", "Creating test task group with ID: ${testTaskData.id}")
+        
+        lifecycleScope.launch {
+            try {
+                val result = taskGroupRepository.saveTaskGroup(userId, testTaskData)
+                if (result.isSuccess) {
+                    val savedTaskGroup = result.getOrNull()
+                    Log.d("LandingActivity", "Test task group saved successfully: ${savedTaskGroup?.id}")
+                    
+                    // Immediately try to load it back to verify
+                    val loadResult = taskGroupRepository.getUserTaskGroups(userId)
+                    if (loadResult.isSuccess) {
+                        val groups = loadResult.getOrNull() ?: emptyList()
+                        Log.d("LandingActivity", "Loaded ${groups.size} task groups after save")
+                        Log.d("LandingActivity", "Group IDs: ${groups.map { it.id }}")
+                        Log.d("LandingActivity", "Contains test ID? ${groups.any { it.id == testTaskData.id }}")
+                    } else {
+                        Log.e("LandingActivity", "Failed to load after save: ${loadResult.exceptionOrNull()?.message}")
+                    }
+                } else {
+                    Log.e("LandingActivity", "Failed to save test task group: ${result.exceptionOrNull()?.message}")
+                }
+            } catch (e: Exception) {
+                Log.e("LandingActivity", "Error creating test task group", e)
+            }
+        }
+    }
+
+    private fun showDeleteTaskGroupDialog(taskData: TaskDataTransfer) {
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Delete Task Group")
+            .setMessage("Are you sure you want to delete the '${taskData.areaName}' task group? This action cannot be undone.")
+            .setPositiveButton("Delete") { _, _ ->
+                deleteTaskGroup(taskData.id)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+    
+    private fun deleteTaskGroup(taskGroupId: String) {
+        val userId = secureStorageManager.getUserId() ?: return
+        
+        lifecycleScope.launch {
+            try {
+                // Show loading indicator
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@LandingActivity, "Deleting task group...", Toast.LENGTH_SHORT).show()
+                }
+                
+                val result = taskGroupRepository.deleteTaskGroup(taskGroupId)
+                
+                withContext(Dispatchers.Main) {
+                    if (result.isSuccess) {
+                        Toast.makeText(this@LandingActivity, "Task group deleted successfully", Toast.LENGTH_SHORT).show()
+                        // Reload task groups to refresh the UI
+                        loadUserTaskGroups()
+                    } else {
+                        val error = result.exceptionOrNull()?.message ?: "Unknown error"
+                        Toast.makeText(this@LandingActivity, "Failed to delete task group: $error", Toast.LENGTH_LONG).show()
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@LandingActivity, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun updateUserGreeting() {
+        // Get user's name from SessionManager
+        val userName = sessionManager.getUserName()
+        
+        // Update the greeting text based on whether we have a name or not
+        if (!userName.isNullOrBlank()) {
+            binding.hiText.text = "Hi $userName"
+        } else {
+            // Fallback to generic greeting if name is not available
+            binding.hiText.text = "Hi there"
         }
     }
 }

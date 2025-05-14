@@ -33,6 +33,7 @@ class CameraTaskActivity : AppCompatActivity() {
     
     private val TAG = "CameraTaskActivity"
     private var currentTasks: List<Task> = emptyList()
+    private var isSelectAllChecked = false
 
     companion object {
         const val RESULT_TASK_DATA = "result_task_data"
@@ -78,12 +79,20 @@ class CameraTaskActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
     }
-    
+
     private fun setupRecyclerView() {
-        taskAdapter = TaskAdapter(this, emptyList()) { task ->
-            // Handle task click - we'll just show a toast for demonstration
-            Toast.makeText(this, "Task: ${task.title}", Toast.LENGTH_SHORT).show()
-        }
+        taskAdapter = TaskAdapter(
+            context = this,
+            tasks = emptyList(),
+            onTaskClicked = { task, isSelected ->
+                // Update the selection state in the UI and enable/disable the Add button
+                updateAddButtonState()
+                // Show toast for better feedback (optional)
+                if (isSelected) {
+                    Toast.makeText(this, "${task.title} selected", Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
         
         binding.tasksRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@CameraTaskActivity)
@@ -113,11 +122,33 @@ class CameraTaskActivity : AppCompatActivity() {
         }
 
         binding.addToDashboardButton.setOnClickListener {
-            if (currentTasks.isNotEmpty()) {
-                addTasksToDashboard()
+            if (taskAdapter.hasSelectedTasks()) {
+                addSelectedTasksToDashboard()
             } else {
-                Toast.makeText(this, "Please generate tasks first", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please select at least one task", Toast.LENGTH_SHORT).show()
             }
+        }
+        
+        binding.selectAllCheckbox.setOnClickListener {
+            isSelectAllChecked = binding.selectAllCheckbox.isChecked
+            taskAdapter.selectAllTasks(isSelectAllChecked)
+            updateAddButtonState()
+        }
+    }
+    
+    private fun updateAddButtonState() {
+        // Get number of selected tasks
+        val selectedCount = taskAdapter.getSelectedTasks().size
+        
+        // Enable or disable the Add to Dashboard button based on selections
+        val hasSelections = selectedCount > 0
+        binding.addToDashboardButton.isEnabled = hasSelections
+        
+        // Update button text to show selection count
+        if (hasSelections) {
+            binding.addToDashboardButton.text = "Add $selectedCount Task${if (selectedCount > 1) "s" else ""} to Dashboard"
+        } else {
+            binding.addToDashboardButton.text = "Add Selected Tasks to Dashboard"
         }
     }
     
@@ -130,8 +161,15 @@ class CameraTaskActivity : AppCompatActivity() {
             currentTasks = tasks
             showTasks(tasks)
             
-            // Show the add to dashboard button when tasks are generated
-            binding.addToDashboardButton.visibility = if (tasks.isNotEmpty()) View.VISIBLE else View.GONE
+            // Reset select all state
+            isSelectAllChecked = false
+            binding.selectAllCheckbox.isChecked = false
+            
+            // Show the task selection section when tasks are generated
+            binding.taskSelectionLayout.visibility = if (tasks.isNotEmpty()) View.VISIBLE else View.GONE
+            
+            // Initially the add button is disabled until tasks are selected
+            binding.addToDashboardButton.isEnabled = false
         }
         
         viewModel.isLoading.observe(this) { isLoading ->
@@ -190,19 +228,24 @@ class CameraTaskActivity : AppCompatActivity() {
         }
     }
 
-    private fun addTasksToDashboard() {
+    private fun addSelectedTasksToDashboard() {
         val areaName = viewModel.areaName.value ?: "Unknown Area"
-        val taskTitles = currentTasks.map { it.title }
+        
+        // Get only the selected tasks
+        val selectedTasks = taskAdapter.getSelectedTasks()
+        
+        // Get the task titles from selected tasks only
+        val taskTitles = selectedTasks.map { it.title }
         
         // Get the captured image and convert to Base64
         val imageBase64 = viewModel.capturedImage.value?.let { 
             TaskDataTransfer.convertBitmapToBase64(it)
         }
         
-        // Create the data transfer object
+        // Create the data transfer object with only selected tasks
         val taskData = TaskDataTransfer(
             areaName = areaName,
-            numberOfTasks = currentTasks.size,
+            numberOfTasks = selectedTasks.size,
             taskTitles = taskTitles,
             imageBase64 = imageBase64
         )
@@ -215,7 +258,7 @@ class CameraTaskActivity : AppCompatActivity() {
         // Set the result and finish
         setResult(Activity.RESULT_OK, resultIntent)
         
-        Toast.makeText(this, "Tasks added to dashboard!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "${selectedTasks.size} tasks added to dashboard!", Toast.LENGTH_SHORT).show()
         finish()
     }
 

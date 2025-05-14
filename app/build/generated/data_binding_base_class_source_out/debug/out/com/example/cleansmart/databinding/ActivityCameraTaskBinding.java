@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,6 +48,12 @@ public abstract class ActivityCameraTaskBinding extends ViewDataBinding {
   public final ProgressBar progressBar;
 
   @NonNull
+  public final CheckBox selectAllCheckbox;
+
+  @NonNull
+  public final CardView taskSelectionLayout;
+
+  @NonNull
   public final TextView tasksHeading;
 
   @NonNull
@@ -57,8 +65,9 @@ public abstract class ActivityCameraTaskBinding extends ViewDataBinding {
   protected ActivityCameraTaskBinding(Object _bindingComponent, View _root, int _localFieldCount,
       Button addToDashboardButton, TextInputEditText areaNameInput, Button captureButton,
       ImageView capturedImageView, Button generateTasksButton, FrameLayout imageContainer,
-      TextView noImageText, ProgressBar progressBar, TextView tasksHeading,
-      RecyclerView tasksRecyclerView, Toolbar toolbar) {
+      TextView noImageText, ProgressBar progressBar, CheckBox selectAllCheckbox,
+      CardView taskSelectionLayout, TextView tasksHeading, RecyclerView tasksRecyclerView,
+      Toolbar toolbar) {
     super(_bindingComponent, _root, _localFieldCount);
     this.addToDashboardButton = addToDashboardButton;
     this.areaNameInput = areaNameInput;
@@ -68,6 +77,8 @@ public abstract class ActivityCameraTaskBinding extends ViewDataBinding {
     this.imageContainer = imageContainer;
     this.noImageText = noImageText;
     this.progressBar = progressBar;
+    this.selectAllCheckbox = selectAllCheckbox;
+    this.taskSelectionLayout = taskSelectionLayout;
     this.tasksHeading = tasksHeading;
     this.tasksRecyclerView = tasksRecyclerView;
     this.toolbar = toolbar;

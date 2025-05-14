@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <!-- Allow cleartext traffic for specific domains -->
+    <!-- Allow cleartext traffic for specific domains (for development) -->
     <domain-config cleartextTrafficPermitted="true">
+        <!-- Local development server -->
         <domain includeSubdomains="true">192.168.1.9</domain>
+        
+        <!-- Android emulator special IP for host machine -->
         <domain includeSubdomains="true">10.0.2.2</domain>
+        
+        <!-- Local network IP ranges (for testing on real devices) -->
+        <domain includeSubdomains="true">192.168.0.0/16</domain>
+        <domain includeSubdomains="true">172.16.0.0/12</domain>
+        <domain includeSubdomains="true">10.0.0.0/8</domain>
+    </domain-config>
+    
+    <!-- Production domain configuration -->
+    <domain-config>
+        <domain includeSubdomains="true">cleansmart-api.herokuapp.com</domain>
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
     </domain-config>
     
     <!-- Default configuration for all other domains -->

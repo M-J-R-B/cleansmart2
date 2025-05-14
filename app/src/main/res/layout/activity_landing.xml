@@ -206,222 +206,29 @@
                 android:fontFamily="sans-serif-medium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/quickActionsCard" />
-
-            <!-- Task Card 1 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/taskCard1"
+                
+            <!-- Task Groups RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/taskGroupsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tasksText">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#E6E6E6"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:id="@+id/calendarIcon1"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/baseline_calendar_today_24"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/dateText1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="February 27,2024"
-                        android:textColor="#333333"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/calendarIcon1"
-                        app:layout_constraintEnd_toStartOf="@+id/menuIcon1"
-                        app:layout_constraintStart_toEndOf="@+id/calendarIcon1"
-                        app:layout_constraintTop_toTopOf="@+id/calendarIcon1" />
-
-                    <ImageView
-                        android:id="@+id/menuIcon1"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/baseline_more_vert_24"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/todoTitle1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="To-Do List 1"
-                        android:textColor="#333333"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintTop_toBottomOf="@+id/calendarIcon1" />
-
-                    <TextView
-                        android:id="@+id/progressLabel1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Progress"
-                        android:textColor="#333333"
-                        android:textSize="14sp"
-                        app:layout_constraintTop_toBottomOf="@+id/todoTitle1" />
-
-                    <ProgressBar
-                        android:id="@+id/progressBar1"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="4dp"
-                        android:progress="60"
-                        android:progressBackgroundTint="#CCCCCC"
-                        android:progressTint="#1ABC9C"
-                        app:layout_constraintTop_toBottomOf="@+id/progressLabel1" />
-
-                    <ImageView
-                        android:id="@+id/timeIcon1"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginTop="4dp"
-                        android:src="@drawable/baseline_access_time_24"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/progressBar1"
-                        app:tint="#1ABC9C" />
-
-                    <TextView
-                        android:id="@+id/timeText1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:text="30 min left"
-                        android:textColor="#1ABC9C"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/timeIcon1"
-                        app:layout_constraintStart_toEndOf="@+id/timeIcon1"
-                        app:layout_constraintTop_toTopOf="@+id/timeIcon1" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Task Card 2 (Similar to Card 1 but with different data) -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/taskCard2"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@+id/tasksText"
+                tools:listitem="@layout/item_task_group" />
+                
+            <!-- Empty State Text -->
+            <TextView
+                android:id="@+id/emptyTasksText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/taskCard1">
-
-                <!-- Similar constraint layout for Task 2 - abbreviated for brevity -->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#E6E6E6"
-                    android:padding="16dp">
-
-                    <!-- Content similar to Card 1 but with different data -->
-                    <ImageView
-                        android:id="@+id/calendarIcon2"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/baseline_calendar_today_24"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/dateText2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="February 28,2024"
-                        android:textColor="#333333"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/calendarIcon2"
-                        app:layout_constraintEnd_toStartOf="@+id/menuIcon2"
-                        app:layout_constraintStart_toEndOf="@+id/calendarIcon2"
-                        app:layout_constraintTop_toTopOf="@+id/calendarIcon2" />
-
-                    <ImageView
-                        android:id="@+id/menuIcon2"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/baseline_more_vert_24"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/todoTitle2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="To-Do List 2"
-                        android:textColor="#333333"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintTop_toBottomOf="@+id/calendarIcon2" />
-
-                    <!-- Other elements for Task 2 -->
-                    <TextView
-                        android:id="@+id/progressLabel2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Progress"
-                        android:textColor="#333333"
-                        android:textSize="14sp"
-                        app:layout_constraintTop_toBottomOf="@+id/todoTitle2" />
-
-                    <ProgressBar
-                        android:id="@+id/progressBar2"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="4dp"
-                        android:progress="50"
-                        android:progressBackgroundTint="#CCCCCC"
-                        android:progressTint="#1ABC9C"
-                        app:layout_constraintTop_toBottomOf="@+id/progressLabel2" />
-
-                    <ImageView
-                        android:id="@+id/timeIcon2"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginTop="4dp"
-                        android:src="@drawable/baseline_access_time_24"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/progressBar2"
-                        app:tint="#1ABC9C" />
-
-                    <TextView
-                        android:id="@+id/timeText2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:text="45 min left"
-                        android:textColor="#1ABC9C"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/timeIcon2"
-                        app:layout_constraintStart_toEndOf="@+id/timeIcon2"
-                        app:layout_constraintTop_toTopOf="@+id/timeIcon2" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Add Task Button -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/addTaskButton"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:backgroundTint="#A5CFD1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/taskCard2">
-
-            </androidx.cardview.widget.CardView>
+                android:gravity="center"
+                android:text="No task groups yet. Create your first task group!"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/tasksText" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

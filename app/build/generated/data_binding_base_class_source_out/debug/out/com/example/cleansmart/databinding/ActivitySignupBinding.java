@@ -35,6 +35,9 @@ public final class ActivitySignupBinding implements ViewBinding {
   public final TextInputLayout confirmPasswordInputLayout;
 
   @NonNull
+  public final TextView diagnosticResultText;
+
+  @NonNull
   public final TextInputLayout emailInputLayout;
 
   @NonNull
@@ -56,6 +59,9 @@ public final class ActivitySignupBinding implements ViewBinding {
   public final TextInputLayout nameInputLayout;
 
   @NonNull
+  public final MaterialButton networkDiagnosticButton;
+
+  @NonNull
   public final TextInputLayout passwordInputLayout;
 
   @NonNull
@@ -66,15 +72,17 @@ public final class ActivitySignupBinding implements ViewBinding {
 
   private ActivitySignupBinding(@NonNull FrameLayout rootView, @NonNull ImageButton backButton,
       @NonNull MaterialButton btnSignUp, @NonNull TextInputLayout confirmPasswordInputLayout,
-      @NonNull TextInputLayout emailInputLayout, @NonNull TextInputEditText etConfirmPassword,
-      @NonNull TextInputEditText etEmail, @NonNull TextInputEditText etName,
-      @NonNull TextInputEditText etPassword, @NonNull LinearLayout headerLayout,
-      @NonNull TextInputLayout nameInputLayout, @NonNull TextInputLayout passwordInputLayout,
+      @NonNull TextView diagnosticResultText, @NonNull TextInputLayout emailInputLayout,
+      @NonNull TextInputEditText etConfirmPassword, @NonNull TextInputEditText etEmail,
+      @NonNull TextInputEditText etName, @NonNull TextInputEditText etPassword,
+      @NonNull LinearLayout headerLayout, @NonNull TextInputLayout nameInputLayout,
+      @NonNull MaterialButton networkDiagnosticButton, @NonNull TextInputLayout passwordInputLayout,
       @NonNull CircularProgressIndicator progressBar, @NonNull TextView signInLink) {
     this.rootView = rootView;
     this.backButton = backButton;
     this.btnSignUp = btnSignUp;
     this.confirmPasswordInputLayout = confirmPasswordInputLayout;
+    this.diagnosticResultText = diagnosticResultText;
     this.emailInputLayout = emailInputLayout;
     this.etConfirmPassword = etConfirmPassword;
     this.etEmail = etEmail;
@@ -82,6 +90,7 @@ public final class ActivitySignupBinding implements ViewBinding {
     this.etPassword = etPassword;
     this.headerLayout = headerLayout;
     this.nameInputLayout = nameInputLayout;
+    this.networkDiagnosticButton = networkDiagnosticButton;
     this.passwordInputLayout = passwordInputLayout;
     this.progressBar = progressBar;
     this.signInLink = signInLink;
@@ -132,6 +141,12 @@ public final class ActivitySignupBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.diagnosticResultText;
+      TextView diagnosticResultText = ViewBindings.findChildViewById(rootView, id);
+      if (diagnosticResultText == null) {
+        break missingId;
+      }
+
       id = R.id.emailInputLayout;
       TextInputLayout emailInputLayout = ViewBindings.findChildViewById(rootView, id);
       if (emailInputLayout == null) {
@@ -174,6 +189,12 @@ public final class ActivitySignupBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.networkDiagnosticButton;
+      MaterialButton networkDiagnosticButton = ViewBindings.findChildViewById(rootView, id);
+      if (networkDiagnosticButton == null) {
+        break missingId;
+      }
+
       id = R.id.passwordInputLayout;
       TextInputLayout passwordInputLayout = ViewBindings.findChildViewById(rootView, id);
       if (passwordInputLayout == null) {
@@ -193,8 +214,9 @@ public final class ActivitySignupBinding implements ViewBinding {
       }
 
       return new ActivitySignupBinding((FrameLayout) rootView, backButton, btnSignUp,
-          confirmPasswordInputLayout, emailInputLayout, etConfirmPassword, etEmail, etName,
-          etPassword, headerLayout, nameInputLayout, passwordInputLayout, progressBar, signInLink);
+          confirmPasswordInputLayout, diagnosticResultText, emailInputLayout, etConfirmPassword,
+          etEmail, etName, etPassword, headerLayout, nameInputLayout, networkDiagnosticButton,
+          passwordInputLayout, progressBar, signInLink);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

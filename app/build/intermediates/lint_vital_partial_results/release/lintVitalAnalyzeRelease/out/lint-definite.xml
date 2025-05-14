@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.8.2" type="incidents">
+
+    <incident
+        id="NullSafeMutableLiveData"
+        severity="fatal"
+        message="Expected non-nullable value">
+        <fix-alternatives>
+            <fix-replace
+                description="Change `LiveData` type to nullable"
+                oldString="_lint_insert_end_"
+                replacement="?"
+                priority="0">
+                <range
+                    file="${:app*release*MAIN*sourceProvider*0*javaDir*0}/com/example/cleansmart/viewmodels/TaskGenerationViewModel.kt"
+                    startOffset="738"
+                    endOffset="748"/>
+            </fix-replace>
+            <fix-replace
+                description="Add non-null asserted (!!) call"
+                oldString="_lint_insert_end_"
+                replacement="!!"
+                priority="0">
+                <range
+                    file="${:app*release*MAIN*sourceProvider*0*javaDir*0}/com/example/cleansmart/viewmodels/TaskGenerationViewModel.kt"
+                    startOffset="1983"
+                    endOffset="2008"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*release*MAIN*sourceProvider*0*javaDir*0}/com/example/cleansmart/viewmodels/TaskGenerationViewModel.kt"
+            line="58"
+            column="47"
+            startOffset="1983"
+            endLine="58"
+            endColumn="72"
+            endOffset="2008"/>
+    </incident>
+
+</incidents>

@@ -4,15 +4,14 @@ package com.example.cleansmart.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.cleansmart.R;
@@ -29,16 +28,7 @@ public final class ActivityLandingBinding implements ViewBinding {
   public final LinearLayout addTaskAction;
 
   @NonNull
-  public final CardView addTaskButton;
-
-  @NonNull
   public final LayoutBottomNavigationBinding bottomNavigation;
-
-  @NonNull
-  public final ImageView calendarIcon1;
-
-  @NonNull
-  public final ImageView calendarIcon2;
 
   @NonNull
   public final LinearLayout cameraAction;
@@ -50,34 +40,13 @@ public final class ActivityLandingBinding implements ViewBinding {
   public final TextView dashboardTitle;
 
   @NonNull
-  public final TextView dateText1;
-
-  @NonNull
-  public final TextView dateText2;
+  public final TextView emptyTasksText;
 
   @NonNull
   public final TextView hiText;
 
   @NonNull
   public final ConstraintLayout main;
-
-  @NonNull
-  public final ImageView menuIcon1;
-
-  @NonNull
-  public final ImageView menuIcon2;
-
-  @NonNull
-  public final ProgressBar progressBar1;
-
-  @NonNull
-  public final ProgressBar progressBar2;
-
-  @NonNull
-  public final TextView progressLabel1;
-
-  @NonNull
-  public final TextView progressLabel2;
 
   @NonNull
   public final CardView quickActionsCard;
@@ -92,31 +61,10 @@ public final class ActivityLandingBinding implements ViewBinding {
   public final NestedScrollView scrollView;
 
   @NonNull
-  public final CardView taskCard1;
-
-  @NonNull
-  public final CardView taskCard2;
+  public final RecyclerView taskGroupsRecyclerView;
 
   @NonNull
   public final TextView tasksText;
-
-  @NonNull
-  public final ImageView timeIcon1;
-
-  @NonNull
-  public final ImageView timeIcon2;
-
-  @NonNull
-  public final TextView timeText1;
-
-  @NonNull
-  public final TextView timeText2;
-
-  @NonNull
-  public final TextView todoTitle1;
-
-  @NonNull
-  public final TextView todoTitle2;
 
   @NonNull
   public final CardView welcomeCard;
@@ -125,52 +73,28 @@ public final class ActivityLandingBinding implements ViewBinding {
   public final TextView welcomeText;
 
   private ActivityLandingBinding(@NonNull ConstraintLayout rootView,
-      @NonNull LinearLayout addTaskAction, @NonNull CardView addTaskButton,
-      @NonNull LayoutBottomNavigationBinding bottomNavigation, @NonNull ImageView calendarIcon1,
-      @NonNull ImageView calendarIcon2, @NonNull LinearLayout cameraAction,
-      @NonNull FloatingActionButton cameraFab, @NonNull TextView dashboardTitle,
-      @NonNull TextView dateText1, @NonNull TextView dateText2, @NonNull TextView hiText,
-      @NonNull ConstraintLayout main, @NonNull ImageView menuIcon1, @NonNull ImageView menuIcon2,
-      @NonNull ProgressBar progressBar1, @NonNull ProgressBar progressBar2,
-      @NonNull TextView progressLabel1, @NonNull TextView progressLabel2,
-      @NonNull CardView quickActionsCard, @NonNull TextView quickActionsTitle,
-      @NonNull LinearLayout scanAction, @NonNull NestedScrollView scrollView,
-      @NonNull CardView taskCard1, @NonNull CardView taskCard2, @NonNull TextView tasksText,
-      @NonNull ImageView timeIcon1, @NonNull ImageView timeIcon2, @NonNull TextView timeText1,
-      @NonNull TextView timeText2, @NonNull TextView todoTitle1, @NonNull TextView todoTitle2,
-      @NonNull CardView welcomeCard, @NonNull TextView welcomeText) {
+      @NonNull LinearLayout addTaskAction, @NonNull LayoutBottomNavigationBinding bottomNavigation,
+      @NonNull LinearLayout cameraAction, @NonNull FloatingActionButton cameraFab,
+      @NonNull TextView dashboardTitle, @NonNull TextView emptyTasksText, @NonNull TextView hiText,
+      @NonNull ConstraintLayout main, @NonNull CardView quickActionsCard,
+      @NonNull TextView quickActionsTitle, @NonNull LinearLayout scanAction,
+      @NonNull NestedScrollView scrollView, @NonNull RecyclerView taskGroupsRecyclerView,
+      @NonNull TextView tasksText, @NonNull CardView welcomeCard, @NonNull TextView welcomeText) {
     this.rootView = rootView;
     this.addTaskAction = addTaskAction;
-    this.addTaskButton = addTaskButton;
     this.bottomNavigation = bottomNavigation;
-    this.calendarIcon1 = calendarIcon1;
-    this.calendarIcon2 = calendarIcon2;
     this.cameraAction = cameraAction;
     this.cameraFab = cameraFab;
     this.dashboardTitle = dashboardTitle;
-    this.dateText1 = dateText1;
-    this.dateText2 = dateText2;
+    this.emptyTasksText = emptyTasksText;
     this.hiText = hiText;
     this.main = main;
-    this.menuIcon1 = menuIcon1;
-    this.menuIcon2 = menuIcon2;
-    this.progressBar1 = progressBar1;
-    this.progressBar2 = progressBar2;
-    this.progressLabel1 = progressLabel1;
-    this.progressLabel2 = progressLabel2;
     this.quickActionsCard = quickActionsCard;
     this.quickActionsTitle = quickActionsTitle;
     this.scanAction = scanAction;
     this.scrollView = scrollView;
-    this.taskCard1 = taskCard1;
-    this.taskCard2 = taskCard2;
+    this.taskGroupsRecyclerView = taskGroupsRecyclerView;
     this.tasksText = tasksText;
-    this.timeIcon1 = timeIcon1;
-    this.timeIcon2 = timeIcon2;
-    this.timeText1 = timeText1;
-    this.timeText2 = timeText2;
-    this.todoTitle1 = todoTitle1;
-    this.todoTitle2 = todoTitle2;
     this.welcomeCard = welcomeCard;
     this.welcomeText = welcomeText;
   }
@@ -208,30 +132,12 @@ public final class ActivityLandingBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.addTaskButton;
-      CardView addTaskButton = ViewBindings.findChildViewById(rootView, id);
-      if (addTaskButton == null) {
-        break missingId;
-      }
-
       id = R.id.bottomNavigation;
       View bottomNavigation = ViewBindings.findChildViewById(rootView, id);
       if (bottomNavigation == null) {
         break missingId;
       }
       LayoutBottomNavigationBinding binding_bottomNavigation = LayoutBottomNavigationBinding.bind(bottomNavigation);
-
-      id = R.id.calendarIcon1;
-      ImageView calendarIcon1 = ViewBindings.findChildViewById(rootView, id);
-      if (calendarIcon1 == null) {
-        break missingId;
-      }
-
-      id = R.id.calendarIcon2;
-      ImageView calendarIcon2 = ViewBindings.findChildViewById(rootView, id);
-      if (calendarIcon2 == null) {
-        break missingId;
-      }
 
       id = R.id.cameraAction;
       LinearLayout cameraAction = ViewBindings.findChildViewById(rootView, id);
@@ -251,15 +157,9 @@ public final class ActivityLandingBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.dateText1;
-      TextView dateText1 = ViewBindings.findChildViewById(rootView, id);
-      if (dateText1 == null) {
-        break missingId;
-      }
-
-      id = R.id.dateText2;
-      TextView dateText2 = ViewBindings.findChildViewById(rootView, id);
-      if (dateText2 == null) {
+      id = R.id.emptyTasksText;
+      TextView emptyTasksText = ViewBindings.findChildViewById(rootView, id);
+      if (emptyTasksText == null) {
         break missingId;
       }
 
@@ -270,42 +170,6 @@ public final class ActivityLandingBinding implements ViewBinding {
       }
 
       ConstraintLayout main = (ConstraintLayout) rootView;
-
-      id = R.id.menuIcon1;
-      ImageView menuIcon1 = ViewBindings.findChildViewById(rootView, id);
-      if (menuIcon1 == null) {
-        break missingId;
-      }
-
-      id = R.id.menuIcon2;
-      ImageView menuIcon2 = ViewBindings.findChildViewById(rootView, id);
-      if (menuIcon2 == null) {
-        break missingId;
-      }
-
-      id = R.id.progressBar1;
-      ProgressBar progressBar1 = ViewBindings.findChildViewById(rootView, id);
-      if (progressBar1 == null) {
-        break missingId;
-      }
-
-      id = R.id.progressBar2;
-      ProgressBar progressBar2 = ViewBindings.findChildViewById(rootView, id);
-      if (progressBar2 == null) {
-        break missingId;
-      }
-
-      id = R.id.progressLabel1;
-      TextView progressLabel1 = ViewBindings.findChildViewById(rootView, id);
-      if (progressLabel1 == null) {
-        break missingId;
-      }
-
-      id = R.id.progressLabel2;
-      TextView progressLabel2 = ViewBindings.findChildViewById(rootView, id);
-      if (progressLabel2 == null) {
-        break missingId;
-      }
 
       id = R.id.quickActionsCard;
       CardView quickActionsCard = ViewBindings.findChildViewById(rootView, id);
@@ -331,57 +195,15 @@ public final class ActivityLandingBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.taskCard1;
-      CardView taskCard1 = ViewBindings.findChildViewById(rootView, id);
-      if (taskCard1 == null) {
-        break missingId;
-      }
-
-      id = R.id.taskCard2;
-      CardView taskCard2 = ViewBindings.findChildViewById(rootView, id);
-      if (taskCard2 == null) {
+      id = R.id.taskGroupsRecyclerView;
+      RecyclerView taskGroupsRecyclerView = ViewBindings.findChildViewById(rootView, id);
+      if (taskGroupsRecyclerView == null) {
         break missingId;
       }
 
       id = R.id.tasksText;
       TextView tasksText = ViewBindings.findChildViewById(rootView, id);
       if (tasksText == null) {
-        break missingId;
-      }
-
-      id = R.id.timeIcon1;
-      ImageView timeIcon1 = ViewBindings.findChildViewById(rootView, id);
-      if (timeIcon1 == null) {
-        break missingId;
-      }
-
-      id = R.id.timeIcon2;
-      ImageView timeIcon2 = ViewBindings.findChildViewById(rootView, id);
-      if (timeIcon2 == null) {
-        break missingId;
-      }
-
-      id = R.id.timeText1;
-      TextView timeText1 = ViewBindings.findChildViewById(rootView, id);
-      if (timeText1 == null) {
-        break missingId;
-      }
-
-      id = R.id.timeText2;
-      TextView timeText2 = ViewBindings.findChildViewById(rootView, id);
-      if (timeText2 == null) {
-        break missingId;
-      }
-
-      id = R.id.todoTitle1;
-      TextView todoTitle1 = ViewBindings.findChildViewById(rootView, id);
-      if (todoTitle1 == null) {
-        break missingId;
-      }
-
-      id = R.id.todoTitle2;
-      TextView todoTitle2 = ViewBindings.findChildViewById(rootView, id);
-      if (todoTitle2 == null) {
         break missingId;
       }
 
@@ -397,12 +219,10 @@ public final class ActivityLandingBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityLandingBinding((ConstraintLayout) rootView, addTaskAction, addTaskButton,
-          binding_bottomNavigation, calendarIcon1, calendarIcon2, cameraAction, cameraFab,
-          dashboardTitle, dateText1, dateText2, hiText, main, menuIcon1, menuIcon2, progressBar1,
-          progressBar2, progressLabel1, progressLabel2, quickActionsCard, quickActionsTitle,
-          scanAction, scrollView, taskCard1, taskCard2, tasksText, timeIcon1, timeIcon2, timeText1,
-          timeText2, todoTitle1, todoTitle2, welcomeCard, welcomeText);
+      return new ActivityLandingBinding((ConstraintLayout) rootView, addTaskAction,
+          binding_bottomNavigation, cameraAction, cameraFab, dashboardTitle, emptyTasksText, hiText,
+          main, quickActionsCard, quickActionsTitle, scanAction, scrollView, taskGroupsRecyclerView,
+          tasksText, welcomeCard, welcomeText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

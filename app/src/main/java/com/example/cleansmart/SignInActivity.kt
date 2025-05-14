@@ -7,10 +7,17 @@ import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.cleansmart.network.ApiService
+import com.example.cleansmart.network.LoginRequest
+import com.example.cleansmart.utils.SecureStorageManager
+import com.example.cleansmart.utils.SessionManager
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.launch
+import java.io.IOException
 
 class SignInActivity : AppCompatActivity() {
     // UI components
@@ -23,10 +30,22 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var forgotPasswordText: TextView
     private lateinit var rememberMeCheckbox: CheckBox
     private lateinit var progressBar: CircularProgressIndicator
+    
+    // Storage manager
+    private lateinit var secureStorageManager: SecureStorageManager
+    private lateinit var sessionManager: SessionManager
+    
+    // API service
+    private lateinit var apiService: ApiService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
+        
+        // Initialize managers
+        secureStorageManager = SecureStorageManager.getInstance(this)
+        sessionManager = SessionManager(this)
+        apiService = ApiService.create()
 
         // Initialize UI components
         initializeViews()
@@ -54,23 +73,13 @@ class SignInActivity : AppCompatActivity() {
                 // Show progress indicator
                 progressBar.visibility = View.VISIBLE
                 btnSignIn.visibility = View.INVISIBLE
-
-                // Here you would normally implement authentication
-                // For now, just simulate a delay and success
-                btnSignIn.postDelayed({
-                    progressBar.visibility = View.GONE
-                    btnSignIn.visibility = View.VISIBLE
-
-                    // Just a placeholder until authentication is implemented
-                    Toast.makeText(this, "Sign in successful!", Toast.LENGTH_SHORT).show()
-
-                    // Navigate to landing activity
-                    Intent(this, LandingActivity::class.java).also {
-                        it.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(it)
-                        finish()
-                    }
-                }, 1500)
+                
+                // Get email and password
+                val email = etUsername.text.toString().trim()
+                val password = etPassword.text.toString()
+                
+                // Call API to authenticate
+                authenticateUser(email, password)
             }
         }
 
@@ -88,12 +97,77 @@ class SignInActivity : AppCompatActivity() {
             }
         }
     }
+    
+    private fun authenticateUser(email: String, password: String) {
+        lifecycleScope.launch {
+            try {
+                val loginRequest = LoginRequest(email, password)
+                val response = apiService.login(loginRequest)
+                
+                // Hide progress indicator
+                runOnUiThread {
+                    progressBar.visibility = View.GONE
+                    btnSignIn.visibility = View.VISIBLE
+                }
+                
+                if (response.isSuccessful && response.body()?.success == true) {
+                    // Authentication successful
+                    val userData = response.body()?.user
+                    if (userData != null) {
+                        // Save user data to secure storage
+                        secureStorageManager.saveUserId(userData.id)
+                        secureStorageManager.saveEmail(userData.email)
+                        secureStorageManager.setRememberMe(rememberMeCheckbox.isChecked)
+                        
+                        // Save to session manager
+                        sessionManager.saveUserEmail(userData.email)
+                        sessionManager.saveUserName(userData.fullName)
+                        
+                        runOnUiThread {
+                            Toast.makeText(this@SignInActivity, "Login successful!", Toast.LENGTH_SHORT).show()
+                            
+                            // Navigate to landing activity
+                            Intent(this@SignInActivity, LandingActivity::class.java).also {
+                                it.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(it)
+                                finish()
+                            }
+                        }
+                    }
+                } else {
+                    // Authentication failed
+                    val errorMessage = response.body()?.message ?: "Authentication failed"
+                    runOnUiThread {
+                        Toast.makeText(this@SignInActivity, errorMessage, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: IOException) {
+                // Network error
+                runOnUiThread {
+                    progressBar.visibility = View.GONE
+                    btnSignIn.visibility = View.VISIBLE
+                    Toast.makeText(
+                        this@SignInActivity, 
+                        "Network error: ${e.message}", 
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } catch (e: Exception) {
+                // Other errors
+                runOnUiThread {
+                    progressBar.visibility = View.GONE
+                    btnSignIn.visibility = View.VISIBLE
+                    Toast.makeText(
+                        this@SignInActivity, 
+                        "Error: ${e.message}", 
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
 
     private fun validateInputs(): Boolean {
-        // Temporarily bypass validation by always returning true
-
-
-        // Original validation code (currently unreachable)
         var isValid = true
 
         // Validate email
@@ -122,4 +196,4 @@ class SignInActivity : AppCompatActivity() {
 
         return isValid
     }
-    }
+}

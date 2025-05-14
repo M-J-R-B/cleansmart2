@@ -24,6 +24,7 @@ import android.net.ConnectivityManager
 import android.content.Context
 import android.net.NetworkCapabilities
 import android.os.Build
+import com.example.cleansmart.network.ApiService
 import com.example.cleansmart.network.NetworkClient
 import com.example.cleansmart.network.SignupRequest
 import retrofit2.Response
@@ -54,32 +55,37 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signup)
+        binding = ActivitySignupBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         sessionManager = SessionManager(this)
         secureStorage = SecureStorageManager.getInstance(this)
+        
         // Initialize UI components
         initializeViews()
 
         // Set click listeners
         setupClickListeners()
+        
+        // Setup real-time validation
+        setupTextWatchers()
     }
 
     private fun initializeViews() {
-        nameInputLayout = findViewById(R.id.nameInputLayout)
-        emailInputLayout = findViewById(R.id.emailInputLayout)
-        passwordInputLayout = findViewById(R.id.passwordInputLayout)
-        confirmPasswordInputLayout = findViewById(R.id.confirmPasswordInputLayout)
+        nameInputLayout = binding.nameInputLayout
+        emailInputLayout = binding.emailInputLayout
+        passwordInputLayout = binding.passwordInputLayout
+        confirmPasswordInputLayout = binding.confirmPasswordInputLayout
 
-        etName = findViewById(R.id.etName)
-        etEmail = findViewById(R.id.etEmail)
-        etPassword = findViewById(R.id.etPassword)
-        etConfirmPassword = findViewById(R.id.etConfirmPassword)
+        etName = binding.etName
+        etEmail = binding.etEmail
+        etPassword = binding.etPassword
+        etConfirmPassword = binding.etConfirmPassword
 
-        btnSignUp = findViewById(R.id.btnSignUp)
-        signInLink = findViewById(R.id.signInLink)
-        backButton = findViewById(R.id.backButton)
-        progressBar = findViewById(R.id.progressBar)
+        btnSignUp = binding.btnSignUp
+        signInLink = binding.signInLink
+        backButton = binding.backButton
+        progressBar = binding.progressBar
     }
 
     private fun setupClickListeners() {
@@ -155,10 +161,14 @@ class SignUpActivity : AppCompatActivity() {
                                         errorMessage,
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    
+                                    // Show diagnostic button for server errors
+                                    binding.networkDiagnosticButton.visibility = View.VISIBLE
                                 }
                             }
                         }
                     } catch (e: Exception) {
+                        Log.e(TAG, "Error during signup: ${e.message}", e)
                         withContext(Dispatchers.Main) {
                             binding.progressBar.visibility = View.GONE
                             binding.btnSignUp.visibility = View.VISIBLE
@@ -167,25 +177,10 @@ class SignUpActivity : AppCompatActivity() {
                                 "Network error: ${e.message}",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            
+                            // Show diagnostic button for network errors
+                            binding.networkDiagnosticButton.visibility = View.VISIBLE
                         }
-                        // Here you would normally implement registration
-                        // For now, just simulate a delay and success
-                        btnSignUp.postDelayed({
-                            progressBar.visibility = View.GONE
-                            btnSignUp.visibility = View.VISIBLE
-
-                            // Just a placeholder until authentication is implemented
-                            Toast.makeText(this@SignUpActivity, "Registration successful!", Toast.LENGTH_SHORT)
-                                .show()
-
-                            // Navigate to sign in screen
-                            Intent(this@SignUpActivity, SignInActivity::class.java).also {
-                                it.flags =
-                                    Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(it)
-                                finish()
-                            }
-                        }, 1500)
                     }
                 }
             }
@@ -195,61 +190,126 @@ class SignUpActivity : AppCompatActivity() {
         signInLink.setOnClickListener {
             onBackPressed()
         }
+        
+        // Network diagnostic button
+        binding.networkDiagnosticButton.setOnClickListener {
+            runNetworkDiagnostics()
+        }
     }
     
+    private fun setupTextWatchers() {
+        // Real-time name validation
+        binding.etName.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                validateName()
+            }
+        }
+        
+        // Real-time email validation
+        binding.etEmail.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                validateEmail()
+            }
+        }
+        
+        // Real-time password validation
+        binding.etPassword.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                validatePassword()
+            }
+        }
+        
+        // Real-time confirm password validation
+        binding.etConfirmPassword.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                validateConfirmPassword()
+            }
+        }
+    }
+
     private fun validateInputs(): Boolean {
-        // Temporarily bypass validation by always returning true
-        return true
-
-        // Original validation code (currently unreachable)
-        var isValid = true
-
-        // Validate name
-        val name = etName.text.toString().trim()
-        if (name.isEmpty()) {
-            nameInputLayout.error = "Name is required"
-            isValid = false
-        } else {
-            nameInputLayout.error = null
+        return validateName() && validateEmail() && validatePassword() && validateConfirmPassword()
+    }
+    
+    private fun validateName(): Boolean {
+        val name = binding.etName.text.toString().trim()
+        return when {
+            name.isEmpty() -> {
+                binding.nameInputLayout.error = "Name is required"
+                false
+            }
+            name.length < 2 -> {
+                binding.nameInputLayout.error = "Name is too short"
+                false
+            }
+            else -> {
+                binding.nameInputLayout.error = null
+                true
+            }
         }
-
-        // Validate email
-        val email = etEmail.text.toString().trim()
-        if (email.isEmpty()) {
-            emailInputLayout.error = "Email is required"
-            isValid = false
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailInputLayout.error = "Enter a valid email address"
-            isValid = false
-        } else {
-            emailInputLayout.error = null
+    }
+    
+    private fun validateEmail(): Boolean {
+        val email = binding.etEmail.text.toString().trim()
+        return when {
+            email.isEmpty() -> {
+                binding.emailInputLayout.error = "Email is required"
+                false
+            }
+            !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                binding.emailInputLayout.error = "Enter a valid email address"
+                false
+            }
+            else -> {
+                binding.emailInputLayout.error = null
+                true
+            }
         }
-
-        // Validate password
-        val password = etPassword.text.toString()
-        if (password.isEmpty()) {
-            passwordInputLayout.error = "Password is required"
-            isValid = false
-        } else if (password.length < 6) {
-            passwordInputLayout.error = "Password must be at least 6 characters"
-            isValid = false
-        } else {
-            passwordInputLayout.error = null
+    }
+    
+    private fun validatePassword(): Boolean {
+        val password = binding.etPassword.text.toString()
+        return when {
+            password.isEmpty() -> {
+                binding.passwordInputLayout.error = "Password is required"
+                false
+            }
+            password.length < 6 -> {
+                binding.passwordInputLayout.error = "Password must be at least 6 characters"
+                false
+            }
+            !password.any { it.isDigit() } -> {
+                binding.passwordInputLayout.error = "Password must contain at least one number"
+                false
+            }
+            !password.any { it.isLetter() } -> {
+                binding.passwordInputLayout.error = "Password must contain at least one letter"
+                false
+            }
+            else -> {
+                binding.passwordInputLayout.error = null
+                true
+            }
         }
-
-        // Validate confirm password
-        val confirmPassword = etConfirmPassword.text.toString()
-        if (confirmPassword.isEmpty()) {
-            confirmPasswordInputLayout.error = "Please confirm your password"
-            isValid = false
-        } else if (confirmPassword != password) {
-            confirmPasswordInputLayout.error = "Passwords do not match"
-            isValid = false
-        } else {
-            confirmPasswordInputLayout.error = null
+    }
+    
+    private fun validateConfirmPassword(): Boolean {
+        val password = binding.etPassword.text.toString()
+        val confirmPassword = binding.etConfirmPassword.text.toString()
+        return when {
+            confirmPassword.isEmpty() -> {
+                binding.confirmPasswordInputLayout.error = "Please confirm your password"
+                false
+            }
+            confirmPassword != password -> {
+                binding.confirmPasswordInputLayout.error = "Passwords do not match"
+                false
+            }
+            else -> {
+                binding.confirmPasswordInputLayout.error = null
+                true
+            }
         }
-
-        return isValid
     }
 
     private fun isNetworkAvailable(): Boolean {
@@ -268,6 +328,45 @@ class SignUpActivity : AppCompatActivity() {
             val networkInfo = connectivityManager.activeNetworkInfo ?: return false
             @Suppress("DEPRECATION")
             return networkInfo.isConnected
+        }
+    }
+
+    private fun runNetworkDiagnostics() {
+        binding.diagnosticResultText.visibility = View.VISIBLE
+        binding.diagnosticResultText.text = "Running network diagnostics..."
+        
+        CoroutineScope(Dispatchers.IO).launch {
+            val results = StringBuilder()
+            
+            // Check internet connectivity
+            results.append("Internet connectivity: ${if (isNetworkAvailable()) "AVAILABLE" else "NOT AVAILABLE"}\n\n")
+            
+            // Get current API endpoint
+            results.append("Current API endpoint: ${ApiService.BASE_URL}\n\n")
+            
+            // Try to ping the server
+            try {
+                val runtime = Runtime.getRuntime()
+                val ipAddress = ApiService.BASE_URL.replace("http://", "").replace("https://", "").split("/")[0]
+                val pingCmd = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    runtime.exec("ping -c 3 $ipAddress")
+                } else {
+                    runtime.exec("ping -c 3 -W 5 $ipAddress")
+                }
+                
+                val inputStream = pingCmd.inputStream
+                val reader = inputStream.bufferedReader()
+                val pingResult = reader.readText()
+                
+                results.append("Ping test result:\n$pingResult\n\n")
+            } catch (e: Exception) {
+                results.append("Ping test failed: ${e.message}\n\n")
+            }
+            
+            // Display results
+            withContext(Dispatchers.Main) {
+                binding.diagnosticResultText.text = results.toString()
+            }
         }
     }
 }

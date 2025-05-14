@@ -21,10 +21,12 @@ public class ActivityCameraTaskBindingImpl extends ActivityCameraTaskBinding  {
         sViewsWithIds.put(R.id.captureButton, 5);
         sViewsWithIds.put(R.id.areaNameInput, 6);
         sViewsWithIds.put(R.id.generateTasksButton, 7);
-        sViewsWithIds.put(R.id.tasksHeading, 8);
-        sViewsWithIds.put(R.id.tasksRecyclerView, 9);
-        sViewsWithIds.put(R.id.addToDashboardButton, 10);
-        sViewsWithIds.put(R.id.progressBar, 11);
+        sViewsWithIds.put(R.id.taskSelectionLayout, 8);
+        sViewsWithIds.put(R.id.tasksHeading, 9);
+        sViewsWithIds.put(R.id.selectAllCheckbox, 10);
+        sViewsWithIds.put(R.id.tasksRecyclerView, 11);
+        sViewsWithIds.put(R.id.addToDashboardButton, 12);
+        sViewsWithIds.put(R.id.progressBar, 13);
     }
     // views
     @NonNull
@@ -35,20 +37,22 @@ public class ActivityCameraTaskBindingImpl extends ActivityCameraTaskBinding  {
     // Inverse Binding Event Handlers
 
     public ActivityCameraTaskBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 12, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 14, sIncludes, sViewsWithIds));
     }
     private ActivityCameraTaskBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (android.widget.Button) bindings[10]
+            , (android.widget.Button) bindings[12]
             , (com.google.android.material.textfield.TextInputEditText) bindings[6]
             , (android.widget.Button) bindings[5]
             , (android.widget.ImageView) bindings[3]
             , (android.widget.Button) bindings[7]
             , (android.widget.FrameLayout) bindings[2]
             , (android.widget.TextView) bindings[4]
-            , (android.widget.ProgressBar) bindings[11]
-            , (android.widget.TextView) bindings[8]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[9]
+            , (android.widget.ProgressBar) bindings[13]
+            , (android.widget.CheckBox) bindings[10]
+            , (androidx.cardview.widget.CardView) bindings[8]
+            , (android.widget.TextView) bindings[9]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[11]
             , (androidx.appcompat.widget.Toolbar) bindings[1]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];

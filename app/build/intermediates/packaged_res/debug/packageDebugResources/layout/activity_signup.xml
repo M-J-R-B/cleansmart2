@@ -239,6 +239,32 @@
                             android:background="?attr/selectableItemBackground"
                             android:padding="4dp" />
                     </LinearLayout>
+                    
+                    <!-- Network diagnostic button (hidden by default) -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/networkDiagnosticButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="Diagnose Connection Issues"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="16dp"
+                        android:visibility="gone"
+                        app:cornerRadius="24dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        app:strokeColor="#FFFFFF" />
+                    
+                    <!-- Diagnostic results text -->
+                    <TextView
+                        android:id="@+id/diagnosticResultText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:fontFamily="monospace"
+                        android:visibility="gone"
+                        android:scrollbars="vertical"
+                        android:maxHeight="200dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

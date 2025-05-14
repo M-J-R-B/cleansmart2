@@ -1,8 +1,12 @@
 package com.example.cleansmart.repository
 
-import com.example.cleansmart.models.Task
+import com.example.cleansmart.network.Task
+import com.example.cleansmart.network.GenerateTasksRequest as NetworkGenerateTasksRequest
+import com.example.cleansmart.network.GenerateTasksResponse as NetworkGenerateTasksResponse
 import com.example.cleansmart.models.TaskGenerationRequest
 import com.example.cleansmart.models.TaskGenerationResponse
+import com.example.cleansmart.models.Task as ModelTask
+import com.example.cleansmart.models.Priority
 import com.example.cleansmart.network.ApiService
 import com.example.cleansmart.network.NetworkClient
 import kotlinx.coroutines.Dispatchers
@@ -98,9 +102,27 @@ class TaskRepository(private val apiService: ApiService) {
     suspend fun generateTasks(request: TaskGenerationRequest): Result<TaskGenerationResponse> {
         return withContext(Dispatchers.IO) {
             try {
-                val response = apiService.generateTasks(request)
+                // Convert to network request
+                val networkRequest = NetworkGenerateTasksRequest(
+                    area = request.area,
+                    imageBase64 = request.imageBase64
+                )
+                
+                val response = apiService.generateTasks(networkRequest)
                 if (response.isSuccessful && response.body() != null) {
-                    Result.success(response.body()!!)
+                    // Convert to model response
+                    val networkResponse = response.body()!!
+                    val modelTasks = networkResponse.tasks?.map { networkTask ->
+                        convertNetworkTaskToModelTask(networkTask)
+                    }
+                    
+                    val modelResponse = TaskGenerationResponse(
+                        success = networkResponse.success,
+                        message = networkResponse.message,
+                        tasks = modelTasks
+                    )
+                    
+                    Result.success(modelResponse)
                 } else {
                     Result.failure(Exception("Failed to generate tasks: ${response.message()}"))
                 }
@@ -121,42 +143,60 @@ class TaskRepository(private val apiService: ApiService) {
             }
         }
     }
+    
+    private fun convertNetworkTaskToModelTask(networkTask: Task): ModelTask {
+        val priority = when(networkTask.priority.uppercase()) {
+            "HIGH" -> Priority.HIGH
+            "LOW" -> Priority.LOW
+            else -> Priority.MEDIUM
+        }
+        
+        return ModelTask(
+            id = networkTask.id ?: "",
+            title = networkTask.title,
+            description = networkTask.description ?: "",
+            area = networkTask.area,
+            priority = priority,
+            isCompleted = networkTask.isCompleted,
+            createdAt = networkTask.createdAt
+        )
+    }
 
     // For demonstration purposes, generate predefined tasks based on area
-    fun generatePredefinedTasks(area: String): List<Task> {
+    fun generatePredefinedTasks(area: String): List<ModelTask> {
         val tasksByArea = mapOf(
             "kitchen" to listOf(
-                Task("k1", "Clean the countertops", "Wipe down all kitchen countertops with disinfectant", "Kitchen", com.example.cleansmart.models.Priority.HIGH),
-                Task("k2", "Wash the dishes", "Wash all dishes in the sink", "Kitchen", com.example.cleansmart.models.Priority.HIGH),
-                Task("k3", "Sweep the floor", "Sweep the kitchen floor", "Kitchen", com.example.cleansmart.models.Priority.MEDIUM),
-                Task("k4", "Mop the floor", "Mop the kitchen floor with cleaner", "Kitchen", com.example.cleansmart.models.Priority.MEDIUM),
-                Task("k5", "Clean the refrigerator", "Remove old food and wipe down shelves", "Kitchen", com.example.cleansmart.models.Priority.LOW)
+                ModelTask("k1", "Clean the countertops", "Wipe down all kitchen countertops with disinfectant", "Kitchen", Priority.HIGH),
+                ModelTask("k2", "Wash the dishes", "Wash all dishes in the sink", "Kitchen", Priority.HIGH),
+                ModelTask("k3", "Sweep the floor", "Sweep the kitchen floor", "Kitchen", Priority.MEDIUM),
+                ModelTask("k4", "Mop the floor", "Mop the kitchen floor with cleaner", "Kitchen", Priority.MEDIUM),
+                ModelTask("k5", "Clean the refrigerator", "Remove old food and wipe down shelves", "Kitchen", Priority.LOW)
             ),
             "bathroom" to listOf(
-                Task("b1", "Clean the toilet", "Scrub the toilet with toilet cleaner", "Bathroom", com.example.cleansmart.models.Priority.HIGH),
-                Task("b2", "Clean the shower", "Scrub the shower with bathroom cleaner", "Bathroom", com.example.cleansmart.models.Priority.HIGH),
-                Task("b3", "Clean the sink", "Wipe down the sink with disinfectant", "Bathroom", com.example.cleansmart.models.Priority.MEDIUM),
-                Task("b4", "Mop the floor", "Mop the bathroom floor", "Bathroom", com.example.cleansmart.models.Priority.MEDIUM),
-                Task("b5", "Replace towels", "Put out fresh towels", "Bathroom", com.example.cleansmart.models.Priority.LOW)
+                ModelTask("b1", "Clean the toilet", "Scrub the toilet with toilet cleaner", "Bathroom", Priority.HIGH),
+                ModelTask("b2", "Clean the shower", "Scrub the shower with bathroom cleaner", "Bathroom", Priority.HIGH),
+                ModelTask("b3", "Clean the sink", "Wipe down the sink with disinfectant", "Bathroom", Priority.MEDIUM),
+                ModelTask("b4", "Mop the floor", "Mop the bathroom floor", "Bathroom", Priority.MEDIUM),
+                ModelTask("b5", "Replace towels", "Put out fresh towels", "Bathroom", Priority.LOW)
             ),
             "living room" to listOf(
-                Task("l1", "Vacuum the carpet", "Vacuum the living room carpet", "Living Room", com.example.cleansmart.models.Priority.HIGH),
-                Task("l2", "Dust the furniture", "Dust all surfaces in the living room", "Living Room", com.example.cleansmart.models.Priority.MEDIUM),
-                Task("l3", "Organize magazines", "Stack magazines neatly", "Living Room", com.example.cleansmart.models.Priority.LOW),
-                Task("l4", "Clean windows", "Clean the living room windows", "Living Room", com.example.cleansmart.models.Priority.LOW),
-                Task("l5", "Fluff pillows", "Fluff and arrange the couch pillows", "Living Room", com.example.cleansmart.models.Priority.LOW)
+                ModelTask("l1", "Vacuum the carpet", "Vacuum the living room carpet", "Living Room", Priority.HIGH),
+                ModelTask("l2", "Dust the furniture", "Dust all surfaces in the living room", "Living Room", Priority.MEDIUM),
+                ModelTask("l3", "Organize magazines", "Stack magazines neatly", "Living Room", Priority.LOW),
+                ModelTask("l4", "Clean windows", "Clean the living room windows", "Living Room", Priority.LOW),
+                ModelTask("l5", "Fluff pillows", "Fluff and arrange the couch pillows", "Living Room", Priority.LOW)
             ),
             "bedroom" to listOf(
-                Task("br1", "Make the bed", "Make the bed with fresh sheets", "Bedroom", com.example.cleansmart.models.Priority.HIGH),
-                Task("br2", "Put away clothes", "Fold and put away clean clothes", "Bedroom", com.example.cleansmart.models.Priority.MEDIUM),
-                Task("br3", "Vacuum the floor", "Vacuum the bedroom floor", "Bedroom", com.example.cleansmart.models.Priority.MEDIUM),
-                Task("br4", "Dust surfaces", "Dust all bedroom surfaces", "Bedroom", com.example.cleansmart.models.Priority.LOW),
-                Task("br5", "Organize nightstand", "Organize items on the nightstand", "Bedroom", com.example.cleansmart.models.Priority.LOW)
+                ModelTask("br1", "Make the bed", "Make the bed with fresh sheets", "Bedroom", Priority.HIGH),
+                ModelTask("br2", "Put away clothes", "Fold and put away clean clothes", "Bedroom", Priority.MEDIUM),
+                ModelTask("br3", "Vacuum the floor", "Vacuum the bedroom floor", "Bedroom", Priority.MEDIUM),
+                ModelTask("br4", "Dust surfaces", "Dust all bedroom surfaces", "Bedroom", Priority.LOW),
+                ModelTask("br5", "Organize nightstand", "Organize items on the nightstand", "Bedroom", Priority.LOW)
             ),
             "default" to listOf(
-                Task("d1", "Clean the area", "General cleaning task", "General", com.example.cleansmart.models.Priority.MEDIUM),
-                Task("d2", "Organize items", "Put things in their proper place", "General", com.example.cleansmart.models.Priority.MEDIUM),
-                Task("d3", "Dust surfaces", "Dust all surfaces in the area", "General", com.example.cleansmart.models.Priority.LOW)
+                ModelTask("d1", "Clean the area", "General cleaning task", "General", Priority.MEDIUM),
+                ModelTask("d2", "Organize items", "Put things in their proper place", "General", Priority.MEDIUM),
+                ModelTask("d3", "Dust surfaces", "Dust all surfaces in the area", "General", Priority.LOW)
             )
         )
 

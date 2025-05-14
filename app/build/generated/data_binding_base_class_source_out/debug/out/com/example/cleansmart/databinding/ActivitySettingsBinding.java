@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -27,10 +28,19 @@ public final class ActivitySettingsBinding implements ViewBinding {
   public final LinearLayout accountLayout;
 
   @NonNull
+  public final TextView apiEndpointDescription;
+
+  @NonNull
+  public final LinearLayout apiEndpointLayout;
+
+  @NonNull
   public final ImageButton backButton;
 
   @NonNull
   public final LinearLayout darkModeLayout;
+
+  @NonNull
+  public final LinearLayout deleteAccountLayout;
 
   @NonNull
   public final LinearLayout inviteLayout;
@@ -61,17 +71,21 @@ public final class ActivitySettingsBinding implements ViewBinding {
 
   private ActivitySettingsBinding(@NonNull ConstraintLayout rootView,
       @NonNull LinearLayout aboutLayout, @NonNull LinearLayout accountLayout,
+      @NonNull TextView apiEndpointDescription, @NonNull LinearLayout apiEndpointLayout,
       @NonNull ImageButton backButton, @NonNull LinearLayout darkModeLayout,
-      @NonNull LinearLayout inviteLayout, @NonNull LinearLayout languageLayout,
-      @NonNull LinearLayout listViewDemoLayout, @NonNull LinearLayout logoutLayout,
-      @NonNull LinearLayout notificationsLayout, @NonNull LinearLayout privacyLayout,
-      @NonNull LinearLayout securityLayout, @NonNull LinearLayout termsLayout,
-      @NonNull LinearLayout toolbar) {
+      @NonNull LinearLayout deleteAccountLayout, @NonNull LinearLayout inviteLayout,
+      @NonNull LinearLayout languageLayout, @NonNull LinearLayout listViewDemoLayout,
+      @NonNull LinearLayout logoutLayout, @NonNull LinearLayout notificationsLayout,
+      @NonNull LinearLayout privacyLayout, @NonNull LinearLayout securityLayout,
+      @NonNull LinearLayout termsLayout, @NonNull LinearLayout toolbar) {
     this.rootView = rootView;
     this.aboutLayout = aboutLayout;
     this.accountLayout = accountLayout;
+    this.apiEndpointDescription = apiEndpointDescription;
+    this.apiEndpointLayout = apiEndpointLayout;
     this.backButton = backButton;
     this.darkModeLayout = darkModeLayout;
+    this.deleteAccountLayout = deleteAccountLayout;
     this.inviteLayout = inviteLayout;
     this.languageLayout = languageLayout;
     this.listViewDemoLayout = listViewDemoLayout;
@@ -122,6 +136,18 @@ public final class ActivitySettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.apiEndpointDescription;
+      TextView apiEndpointDescription = ViewBindings.findChildViewById(rootView, id);
+      if (apiEndpointDescription == null) {
+        break missingId;
+      }
+
+      id = R.id.apiEndpointLayout;
+      LinearLayout apiEndpointLayout = ViewBindings.findChildViewById(rootView, id);
+      if (apiEndpointLayout == null) {
+        break missingId;
+      }
+
       id = R.id.backButton;
       ImageButton backButton = ViewBindings.findChildViewById(rootView, id);
       if (backButton == null) {
@@ -131,6 +157,12 @@ public final class ActivitySettingsBinding implements ViewBinding {
       id = R.id.darkModeLayout;
       LinearLayout darkModeLayout = ViewBindings.findChildViewById(rootView, id);
       if (darkModeLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.deleteAccountLayout;
+      LinearLayout deleteAccountLayout = ViewBindings.findChildViewById(rootView, id);
+      if (deleteAccountLayout == null) {
         break missingId;
       }
 
@@ -189,8 +221,9 @@ public final class ActivitySettingsBinding implements ViewBinding {
       }
 
       return new ActivitySettingsBinding((ConstraintLayout) rootView, aboutLayout, accountLayout,
-          backButton, darkModeLayout, inviteLayout, languageLayout, listViewDemoLayout,
-          logoutLayout, notificationsLayout, privacyLayout, securityLayout, termsLayout, toolbar);
+          apiEndpointDescription, apiEndpointLayout, backButton, darkModeLayout,
+          deleteAccountLayout, inviteLayout, languageLayout, listViewDemoLayout, logoutLayout,
+          notificationsLayout, privacyLayout, securityLayout, termsLayout, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -7,8 +7,9 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AlertDialog
 
-class SettingsActivity : FragmentActivity(), LogoutDialogFragment.LogoutDialogListener {
+class SettingsActivity : FragmentActivity(), LogoutDialogFragment.LogoutDialogListener, DeleteAccountDialogFragment.DeleteAccountDialogListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +28,11 @@ class SettingsActivity : FragmentActivity(), LogoutDialogFragment.LogoutDialogLi
     }
 
     private fun setupSettingsItemClickListeners() {
+        // API Endpoint settings
+        findViewById<LinearLayout>(R.id.apiEndpointLayout).setOnClickListener {
+            showApiEndpointDialog()
+        }
+
         // Account settings
         findViewById<LinearLayout>(R.id.accountLayout).setOnClickListener {
             Toast.makeText(this, "Account settings", Toast.LENGTH_SHORT).show()
@@ -86,6 +92,11 @@ class SettingsActivity : FragmentActivity(), LogoutDialogFragment.LogoutDialogLi
             }
             startActivity(Intent.createChooser(intent, "Share via"))
         }
+        
+        // Delete Account
+        findViewById<LinearLayout>(R.id.deleteAccountLayout).setOnClickListener {
+            showDeleteAccountConfirmationDialog()
+        }
 
         // Logout
         findViewById<LinearLayout>(R.id.logoutLayout).setOnClickListener {
@@ -98,6 +109,12 @@ class SettingsActivity : FragmentActivity(), LogoutDialogFragment.LogoutDialogLi
         logoutDialog.setLogoutDialogListener(this)
         logoutDialog.show(supportFragmentManager, "LogoutDialog")
     }
+    
+    private fun showDeleteAccountConfirmationDialog() {
+        val deleteAccountDialog = DeleteAccountDialogFragment()
+        deleteAccountDialog.setDeleteAccountDialogListener(this)
+        deleteAccountDialog.show(supportFragmentManager, "DeleteAccountDialog")
+    }
 
     override fun onLogoutConfirmed() {
         // The actual logout is now handled in LogoutDialogFragment
@@ -105,5 +122,44 @@ class SettingsActivity : FragmentActivity(), LogoutDialogFragment.LogoutDialogLi
 
     override fun onLogoutCancelled() {
         Toast.makeText(this, "Logout cancelled", Toast.LENGTH_SHORT).show()
+    }
+    
+    override fun onDeleteAccountConfirmed() {
+        // The actual account deletion is handled in DeleteAccountDialogFragment
+    }
+    
+    override fun onDeleteAccountCancelled() {
+        Toast.makeText(this, "Account deletion cancelled", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showApiEndpointDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Select API Endpoint")
+        
+        val endpoints = arrayOf(
+            "Development (Local IP: 192.168.1.9)", 
+            "Emulator (10.0.2.2)", 
+            "Production"
+        )
+        
+        val sharedPrefs = getSharedPreferences("app_settings", Context.MODE_PRIVATE)
+        val currentEndpoint = sharedPrefs.getInt("api_endpoint", 0)
+        
+        builder.setSingleChoiceItems(endpoints, currentEndpoint) { dialog, which ->
+            // Save the selected endpoint
+            sharedPrefs.edit().putInt("api_endpoint", which).apply()
+            
+            // Update the description
+            val apiEndpointDescription = findViewById<android.widget.TextView>(R.id.apiEndpointDescription)
+            apiEndpointDescription.text = "Using: ${endpoints[which]}"
+            
+            // Show a message that app restart is required
+            Toast.makeText(this, "Restart app to apply new API endpoint", Toast.LENGTH_LONG).show()
+            
+            dialog.dismiss()
+        }
+        
+        val dialog = builder.create()
+        dialog.show()
     }
 }

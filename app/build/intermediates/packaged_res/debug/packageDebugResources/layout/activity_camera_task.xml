@@ -138,41 +138,65 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/tasksHeading"
+                <!-- Task Selection Section -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/taskSelectionLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:text="Generated Tasks"
-                    android:textColor="#333333"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/tasksRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="16dp"
-                    android:nestedScrollingEnabled="false"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
 
-                <Button
-                    android:id="@+id/addToDashboardButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="24dp"
-                    android:backgroundTint="#FF9800"
-                    android:padding="12dp"
-                    android:text="Add Tasks to Dashboard"
-                    android:textColor="#FFFFFF"
-                    android:visibility="gone" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/tasksHeading"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Generated Tasks"
+                            android:textColor="#333333"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Select the tasks you want to add to your dashboard"
+                            android:textColor="#666666" />
+
+                        <CheckBox
+                            android:id="@+id/selectAllCheckbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Select All Tasks" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/tasksRecyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:nestedScrollingEnabled="false" />
+
+                        <Button
+                            android:id="@+id/addToDashboardButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:backgroundTint="#FF9800"
+                            android:padding="12dp"
+                            android:text="Add Selected Tasks to Dashboard"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <ProgressBar
                     android:id="@+id/progressBar"

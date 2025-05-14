@@ -21,17 +21,50 @@ import java.net.UnknownHostException
 import java.util.concurrent.TimeUnit
 
 object NetworkClient {
-    private const val BASE_URL = "http://192.168.1.9:5000/api/" // Using original IP as requested
+    // Use the BASE_URL from ApiService instead of hardcoding a different one
+    private var baseUrl = ApiService.BASE_URL
     private const val TIMEOUT_SECONDS = 30L
     private const val TAG = "NetworkClient"
     private val gson = Gson()
     private var secureStorageManager: SecureStorageManager? = null
     private var appContext: Context? = null
+    private var retrofit: Retrofit? = null
+    private var isInitialized = false
 
     // Initialize with application context to get secure storage
     fun initialize(context: Context) {
-        appContext = context.applicationContext
-        secureStorageManager = SecureStorageManager.getInstance(context)
+        try {
+            if (isInitialized) return
+            
+            appContext = context.applicationContext
+            secureStorageManager = SecureStorageManager.getInstance(context)
+            
+            // Update the base URL based on user preferences
+            baseUrl = ApiService.getBaseUrl(context)
+            
+            // Initialize Retrofit with the selected URL
+            initializeRetrofit()
+            
+            isInitialized = true
+            Log.d(TAG, "NetworkClient successfully initialized")
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to initialize NetworkClient: ${e.message}", e)
+            // Continue even if there's an error - we'll handle it later when making requests
+        }
+    }
+    
+    private fun initializeRetrofit() {
+        try {
+            retrofit = Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(okHttpClient)
+                .addConverterFactory(ScalarsConverterFactory.create()) 
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        } catch (e: Exception) {
+            Log.e(TAG, "Error initializing Retrofit: ${e.message}", e)
+            throw e
+        }
     }
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
@@ -43,23 +76,12 @@ object NetworkClient {
         
         // Check for network connectivity first
         if (!isNetworkAvailable() && appContext != null) {
-            throw NoConnectivityException("No network connection available")
+            Log.e(TAG, "Network unavailable when attempting to make a request to ${originalRequest.url}")
+            throw NoConnectivityException("No network connection available. Please check your internet connection and try again.")
         }
         
-        // Log the full request details
-        Log.d(TAG, """
-            --> ${originalRequest.method} ${originalRequest.url}
-            Headers: ${originalRequest.headers}
-            Body: ${originalRequest.body?.let { 
-                try {
-                    val buffer = okio.Buffer()
-                    it.writeTo(buffer)
-                    buffer.readUtf8()
-                } catch (e: Exception) {
-                    "Could not read body: ${e.message}"
-                }
-            }}
-        """.trimIndent())
+        // Simplified logging to avoid security issues on MIUI
+        Log.d(TAG, "--> REQUEST ${originalRequest.method} ${originalRequest.url}")
 
         // Add content-type header if not present
         val request = originalRequest.newBuilder()
@@ -71,27 +93,28 @@ object NetworkClient {
             .build()
 
         try {
-            chain.proceed(request).also { response ->
-                // Log the response details
-                Log.d(TAG, """
-                    <-- ${response.code} ${response.message}
-                    URL: ${response.request.url}
-                    Headers: ${response.headers}
-                    Body: ${response.peekBody(Long.MAX_VALUE).string()}
-                """.trimIndent())
-            }
+            val response = chain.proceed(request)
+            
+            // Simplified logging for response
+            Log.d(TAG, "<-- RESPONSE ${response.code} for ${response.request.url}")
+            
+            return@Interceptor response
         } catch (e: Exception) {
-            Log.e(TAG, "Network error during request to ${request.url}", e)
-            // Log more details about the error
-            Log.e(TAG, "Error type: ${e.javaClass.simpleName}")
-            Log.e(TAG, "Error message: ${e.message}")
-            Log.e(TAG, "Stack trace: ${e.stackTraceToString()}")
+            Log.e(TAG, "Network error during request to ${request.url}: ${e.message}")
+            
+            // Try to provide more helpful error messages
+            val errorMessage = when (e) {
+                is SocketTimeoutException -> "Connection timed out. The server might be slow or unreachable at the moment."
+                is UnknownHostException -> "Server cannot be reached. Please check if the server address is correct: ${request.url.host}"
+                is ConnectException -> "Failed to connect to the server. Is your server running at ${request.url.host}:${request.url.port}?"
+                else -> "Network error: ${e.message}"
+            }
             
             // Rethrow with more specific exception types
             when (e) {
-                is SocketTimeoutException -> throw NetworkTimeoutException("Connection timed out: ${e.message}")
-                is UnknownHostException -> throw ServerUnreachableException("Server cannot be reached: ${e.message}")
-                is ConnectException -> throw ConnectionFailureException("Failed to connect: ${e.message}")
+                is SocketTimeoutException -> throw NetworkTimeoutException(errorMessage)
+                is UnknownHostException -> throw ServerUnreachableException(errorMessage)
+                is ConnectException -> throw ConnectionFailureException(errorMessage)
                 else -> throw e
             }
         }
@@ -102,7 +125,12 @@ object NetworkClient {
         val originalRequest = chain.request()
         
         // Get auth token from secure storage
-        val token = secureStorageManager?.getAuthToken()
+        val token = try {
+            secureStorageManager?.getAuthToken()
+        } catch (e: Exception) {
+            Log.e(TAG, "Error getting auth token: ${e.message}")
+            null
+        }
         
         // If token exists, add it to the request
         val newRequest = if (token != null) {
@@ -116,25 +144,38 @@ object NetworkClient {
         chain.proceed(newRequest)
     }
 
-    private val okHttpClient = OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .addInterceptor(authInterceptor)  // Add auth interceptor first
-        .addInterceptor(networkInterceptor)
-        .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
-        .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
-        .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
-        .retryOnConnectionFailure(true)
-        .build()
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .client(okHttpClient)
-        .addConverterFactory(ScalarsConverterFactory.create()) // Add Scalars first
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    private val okHttpClient by lazy {
+        try {
+            OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .addInterceptor(authInterceptor)  // Add auth interceptor first
+                .addInterceptor(networkInterceptor)
+                .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(true)
+                .build()
+        } catch (e: Exception) {
+            Log.e(TAG, "Error creating OkHttpClient: ${e.message}", e)
+            // Fallback to a simpler client if we encounter issues
+            OkHttpClient.Builder()
+                .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .build()
+        }
+    }
 
     val apiService: ApiService by lazy {
-        retrofit.create(ApiService::class.java)
+        try {
+            if (retrofit == null) {
+                initializeRetrofit()
+            }
+            retrofit!!.create(ApiService::class.java)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error creating ApiService: ${e.message}", e)
+            throw RuntimeException("Failed to initialize API service. Please restart the app.", e)
+        }
     }
     
     // Custom exceptions for better error handling
@@ -145,18 +186,24 @@ object NetworkClient {
     
     // Check if network is available
     private fun isNetworkAvailable(): Boolean {
-        val context = appContext ?: return false
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val network = connectivityManager.activeNetwork ?: return false
-            val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
-            return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-        } else {
-            @Suppress("DEPRECATION")
-            val networkInfo = connectivityManager.activeNetworkInfo ?: return false
-            @Suppress("DEPRECATION")
-            return networkInfo.isConnected
+        try {
+            val context = appContext ?: return false
+            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val network = connectivityManager.activeNetwork ?: return false
+                val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+                return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+            } else {
+                @Suppress("DEPRECATION")
+                val networkInfo = connectivityManager.activeNetworkInfo ?: return false
+                @Suppress("DEPRECATION")
+                return networkInfo.isConnected
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error checking network availability: ${e.message}", e)
+            // Default to true if we can't check, to avoid blocking network requests
+            return true
         }
     }
 } 
