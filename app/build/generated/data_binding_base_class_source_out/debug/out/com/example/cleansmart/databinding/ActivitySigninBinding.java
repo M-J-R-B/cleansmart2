@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -27,19 +26,16 @@ public final class ActivitySigninBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final ImageButton backButton;
-
-  @NonNull
   public final MaterialButton btnSignIn;
 
   @NonNull
   public final TextInputLayout emailInputLayout;
 
   @NonNull
-  public final TextInputEditText etEmail;
+  public final TextInputEditText etPassword;
 
   @NonNull
-  public final TextInputEditText etPassword;
+  public final TextInputEditText etUsername;
 
   @NonNull
   public final TextView forgotPasswordText;
@@ -62,19 +58,17 @@ public final class ActivitySigninBinding implements ViewBinding {
   @NonNull
   public final TextView signUpLink;
 
-  private ActivitySigninBinding(@NonNull FrameLayout rootView, @NonNull ImageButton backButton,
-      @NonNull MaterialButton btnSignIn, @NonNull TextInputLayout emailInputLayout,
-      @NonNull TextInputEditText etEmail, @NonNull TextInputEditText etPassword,
-      @NonNull TextView forgotPasswordText, @NonNull LinearLayout headerLayout,
-      @NonNull FrameLayout main, @NonNull TextInputLayout passwordInputLayout,
-      @NonNull CircularProgressIndicator progressBar, @NonNull CheckBox rememberMeCheckbox,
-      @NonNull TextView signUpLink) {
+  private ActivitySigninBinding(@NonNull FrameLayout rootView, @NonNull MaterialButton btnSignIn,
+      @NonNull TextInputLayout emailInputLayout, @NonNull TextInputEditText etPassword,
+      @NonNull TextInputEditText etUsername, @NonNull TextView forgotPasswordText,
+      @NonNull LinearLayout headerLayout, @NonNull FrameLayout main,
+      @NonNull TextInputLayout passwordInputLayout, @NonNull CircularProgressIndicator progressBar,
+      @NonNull CheckBox rememberMeCheckbox, @NonNull TextView signUpLink) {
     this.rootView = rootView;
-    this.backButton = backButton;
     this.btnSignIn = btnSignIn;
     this.emailInputLayout = emailInputLayout;
-    this.etEmail = etEmail;
     this.etPassword = etPassword;
+    this.etUsername = etUsername;
     this.forgotPasswordText = forgotPasswordText;
     this.headerLayout = headerLayout;
     this.main = main;
@@ -111,12 +105,6 @@ public final class ActivitySigninBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.backButton;
-      ImageButton backButton = ViewBindings.findChildViewById(rootView, id);
-      if (backButton == null) {
-        break missingId;
-      }
-
       id = R.id.btnSignIn;
       MaterialButton btnSignIn = ViewBindings.findChildViewById(rootView, id);
       if (btnSignIn == null) {
@@ -129,15 +117,15 @@ public final class ActivitySigninBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.etEmail;
-      TextInputEditText etEmail = ViewBindings.findChildViewById(rootView, id);
-      if (etEmail == null) {
-        break missingId;
-      }
-
       id = R.id.etPassword;
       TextInputEditText etPassword = ViewBindings.findChildViewById(rootView, id);
       if (etPassword == null) {
+        break missingId;
+      }
+
+      id = R.id.etUsername;
+      TextInputEditText etUsername = ViewBindings.findChildViewById(rootView, id);
+      if (etUsername == null) {
         break missingId;
       }
 
@@ -179,9 +167,9 @@ public final class ActivitySigninBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivitySigninBinding((FrameLayout) rootView, backButton, btnSignIn,
-          emailInputLayout, etEmail, etPassword, forgotPasswordText, headerLayout, main,
-          passwordInputLayout, progressBar, rememberMeCheckbox, signUpLink);
+      return new ActivitySigninBinding((FrameLayout) rootView, btnSignIn, emailInputLayout,
+          etPassword, etUsername, forgotPasswordText, headerLayout, main, passwordInputLayout,
+          progressBar, rememberMeCheckbox, signUpLink);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

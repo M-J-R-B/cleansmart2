@@ -13,19 +13,8 @@ plugins {
     alias(libs.plugins.kotlin.compose) apply false
 }
 
-// Set Java toolchain version for all projects
+// Set repositories for all projects
 allprojects {
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions {
-            jvmTarget = "1.8"
-        }
-    }
-    
-    tasks.withType<JavaCompile>().configureEach {
-        sourceCompatibility = JavaVersion.VERSION_1_8.toString()
-        targetCompatibility = JavaVersion.VERSION_1_8.toString()
-    }
-
     repositories {
         google()
         mavenCentral()
@@ -33,3 +22,4 @@ allprojects {
         maven { url = uri("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven") }
     }
 }
+

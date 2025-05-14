@@ -1,10 +1,17 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
             "outputFile": "com.example.cleansmart.app-mergeDebugResources-39:/values-v25/values-v25.xml",
             "map": [
                 {
                     "source": "C:\\Users\\user\\.gradle\\caches\\8.11.1\\transforms\\910dc9b688ffc995a15e9ab09538288f\\transformed\\appcompat-1.6.1\\res\\values-v25\\values-v25.xml",
+=======
+            "outputFile": "com.example.cleansmart.app-mergeDebugResources-58:/values-v25/values-v25.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\user\\.gradle\\caches\\8.10.2\\transforms\\5a5f1a9989a59abd1702d9ede7dec1a1\\transformed\\appcompat-1.6.1\\res\\values-v25\\values-v25.xml",
+>>>>>>> 086021e2a7e25b0261746b47f0be3ba38a178411
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",
